@@ -1,5 +1,5 @@
 import com.aedans.engine.DisplayManager;
-import org.lwjgl.LWJGLException;
+import com.aedans.platformer.Game;
 
 /**
  * Created by Aedan Smith on 8/23/2016.
@@ -17,6 +17,7 @@ public class Main {
     public static void main(String[] args){
         try {
             DisplayManager.createDisplay(Integer.parseInt(args[0]), Integer.parseInt(args[1]), false, "F2P Platformer");
+            new Game().run();
         } catch (Exception e){
             System.out.print("Could not initialize game: ");
             e.printStackTrace(System.out);

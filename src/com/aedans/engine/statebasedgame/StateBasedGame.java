@@ -1,0 +1,67 @@
+package com.aedans.engine.statebasedgame;
+
+import com.aedans.engine.DisplayManager;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * Created by Aedan Smith on 8/23/2016.
+ *
+ * Abstract class for creating StateBasedGames.
+ */
+
+public abstract class StateBasedGame implements Runnable {
+
+    /**
+     * The List of GameStates for the StateBasedGame to use.
+     */
+    private List<GameState> gameStates = new ArrayList<>();
+
+    /**
+     * The ID of the active GameState.
+     */
+    private int activeGameState = 0;
+
+    /**
+     * The default StateBasedGame constructor.
+     *
+     * @param initGameState: The GameState for the StateBasedGame to start on.
+     * @param gameStates: The List of GameStates for the StateBasedGame to use.
+     */
+    protected StateBasedGame(GameState initGameState, GameState... gameStates){
+        this.gameStates.add(initGameState);
+        Collections.addAll(this.gameStates, gameStates);
+    }
+
+    /**
+     * Runs the StateBasedGame.
+     */
+    public void run(){
+        while (!DisplayManager.isCloseRequested()){
+            try {
+                getActiveGameState().update();
+                getActiveGameState().render();
+            } catch (IndexOutOfBoundsException e){
+                System.out.println("Fatal Error: Could not get game state with ID " + getActiveGameState());
+                e.printStackTrace(System.out);
+                break;
+            }
+        }
+    }
+
+    protected int addGameState(GameState gameState){
+        this.gameStates.add(gameState);
+        return gameStates.size()-1;
+    }
+
+    protected GameState getActiveGameState() throws IndexOutOfBoundsException {
+        return gameStates.get(activeGameState);
+    }
+
+    protected GameState getGameState(int gameStateID) throws IndexOutOfBoundsException {
+        return gameStates.get(gameStateID);
+    }
+
+}
