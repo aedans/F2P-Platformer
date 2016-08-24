@@ -1,10 +1,10 @@
-package com.aedans.engine;
+package com.aedans.engine.renderer;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.*;
 
 /**
- * Created by Aedan Smith on 5/3/2016.
+ * Created by Aedan Smith on 5/23/2016.
  * <p>
  * The Display manager for the Game.
  */

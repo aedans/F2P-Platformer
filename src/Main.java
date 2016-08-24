@@ -1,4 +1,4 @@
-import com.aedans.engine.DisplayManager;
+import com.aedans.engine.renderer.DisplayManager;
 import com.aedans.platformer.Game;
 
 /**

@@ -1,6 +1,7 @@
 package com.aedans.engine.statebasedgame;
 
-import com.aedans.engine.DisplayManager;
+import com.aedans.engine.renderer.DisplayManager;
+import com.aedans.engine.renderer.Loader;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,14 +42,17 @@ public abstract class StateBasedGame implements Runnable {
     public void run(){
         while (!DisplayManager.isCloseRequested()){
             try {
+                DisplayManager.updateDisplay();
                 getActiveGameState().update();
                 getActiveGameState().render();
             } catch (IndexOutOfBoundsException e){
                 System.out.println("Fatal Error: Could not get game state with ID " + getActiveGameState());
                 e.printStackTrace(System.out);
+                Loader.cleanUp();
                 break;
             }
         }
+        Loader.cleanUp();
     }
 
     protected int addGameState(GameState gameState){
