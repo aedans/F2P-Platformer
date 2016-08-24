@@ -17,10 +17,10 @@ public class Player extends Entity {
         super(0, 0, TexturedModel.getTexturedModel(.08f, .08f, Textures.getTexture("player")));
         this.addComponent(entity -> {
             if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
-                entity.x -= .01f;
+                entity.x -= .015f;
             }
             if (Keyboard.isKeyDown(Keyboard.KEY_D)){
-                entity.x += .01f;
+                entity.x += .015f;
             }
         });
     }

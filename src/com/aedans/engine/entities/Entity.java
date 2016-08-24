@@ -13,19 +13,19 @@ import java.util.ArrayList;
 
 public abstract class Entity extends Sprite {
 
-    private ArrayList<EntityComponent> components = new ArrayList<>();
+    private ArrayList<Component<Entity>> components = new ArrayList<>();
 
     public Entity(float x, float y, TexturedModel texturedModel) {
         super(x, y, texturedModel);
     }
 
     public void update(){
-        for (EntityComponent ec : components){
-            ec.update(this);
+        for (Component<Entity> ec : components){
+            ec.apply(this);
         }
     }
 
-    public void addComponent(EntityComponent component){
+    public void addComponent(Component<Entity> component){
         components.add(component);
     }
 
