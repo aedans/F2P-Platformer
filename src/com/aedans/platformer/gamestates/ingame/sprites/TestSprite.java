@@ -16,4 +16,9 @@ public class TestSprite extends Sprite {
         super(x, y, TexturedModel.getTexturedModel(.1f, .1f, Textures.getTexture(textureName)));
     }
 
+    @Override
+    public void update() {
+
+    }
+
 }

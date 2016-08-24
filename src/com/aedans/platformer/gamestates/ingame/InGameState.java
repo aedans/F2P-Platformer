@@ -4,6 +4,7 @@ import com.aedans.engine.renderer.Renderer;
 import com.aedans.engine.renderer.data.Textures;
 import com.aedans.engine.statebasedgame.GameState;
 import com.aedans.platformer.gamestates.ingame.sprites.TestSprite;
+import com.aedans.platformer.gamestates.ingame.sprites.entities.Player;
 
 /**
  * Created by Aedan Smith on 8/23/2016.
@@ -13,30 +14,26 @@ import com.aedans.platformer.gamestates.ingame.sprites.TestSprite;
 
 public class InGameState extends GameState {
 
-    private TestSprite testSprite1;
-    private TestSprite testSprite2;
+    private Player player;
 
     public InGameState(){
         try {
-            Textures.loadTexture("test1.png");
-            Textures.loadTexture("test2.png");
+            Textures.loadTexture("player.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        testSprite1 = new TestSprite(-.2f, -.2f, "test1");
-        testSprite2 = new TestSprite(.2f, .2f, "test2");
+        player = new Player();
     }
 
     @Override
     public void update() {
-
+        player.update();
     }
 
     @Override
     public void render() {
         Renderer.beginRender();
-        testSprite1.render();
-        testSprite2.render();
+        player.render();
         Renderer.endRender();
     }
 

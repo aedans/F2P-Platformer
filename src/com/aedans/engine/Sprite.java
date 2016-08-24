@@ -14,7 +14,7 @@ import org.lwjgl.util.Renderable;
 public abstract class Sprite implements Renderable {
 
     private TexturedModel texturedModel;
-    private float x, y;
+    public float x, y;
 
     public Sprite(float x, float y, TexturedModel texturedModel){
         this.texturedModel = texturedModel;
@@ -27,5 +27,7 @@ public abstract class Sprite implements Renderable {
         Renderer.loadTexturedModel(texturedModel);
         Renderer.drawElements();
     }
+
+    public abstract void update();
 
 }
