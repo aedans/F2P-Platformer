@@ -22,9 +22,10 @@ public class InGameState extends GameState {
 
     @Override
     public void render() {
-        Renderer.prepare();
+        Renderer.beginRender();
         testSprite1.render();
         testSprite2.render();
+        Renderer.endRender();
     }
 
 }
