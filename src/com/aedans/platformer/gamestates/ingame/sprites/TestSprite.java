@@ -1,8 +1,8 @@
 package com.aedans.platformer.gamestates.ingame.sprites;
 
 import com.aedans.engine.Sprite;
-import com.aedans.engine.renderer.Loader;
 import com.aedans.engine.renderer.data.TexturedModel;
+import com.aedans.engine.renderer.data.Textures;
 
 /**
  * Created by Aedan Smith on 8/23/2016.
@@ -12,8 +12,8 @@ import com.aedans.engine.renderer.data.TexturedModel;
 
 public class TestSprite extends Sprite {
 
-    public TestSprite(float x, float y) {
-        super(x, y, TexturedModel.getTexturedModel(.1f, .1f, Loader.loadPNGTexture("test")));
+    public TestSprite(float x, float y, String textureName) {
+        super(x, y, TexturedModel.getTexturedModel(.1f, .1f, Textures.getTexture(textureName)));
     }
 
 }

@@ -31,7 +31,7 @@ public class Renderer {
     /**
      * The current Model and Texture bound to the Renderer.
      */
-    private static int currentModelID = -1, currentTextureID = -1;
+    private static int currentModelID = -256, currentTextureID = -256;
 
     /**
      * The current frame number.
@@ -76,13 +76,13 @@ public class Renderer {
      */
     public static void loadTexturedModel(TexturedModel texturedModel){
         if (texturedModel.getModelID() != currentModelID) {
-            printf("Loaded Model %d", texturedModel.getModelID());
             GL30.glBindVertexArray(texturedModel.getModelID());
+            printf("Loaded Model %d", texturedModel.getModelID());
             currentModelID = texturedModel.getModelID();
         }
         if (texturedModel.getTextureID() != currentTextureID) {
-            printf("Loaded Texture %d", texturedModel.getTextureID());
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, texturedModel.getTextureID());
+            printf("Loaded Texture %d", texturedModel.getTextureID());
             currentTextureID = texturedModel.getTextureID();
         }
     }

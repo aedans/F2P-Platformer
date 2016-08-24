@@ -3,7 +3,6 @@ package com.aedans.engine;
 import com.aedans.engine.math.MatrixMath;
 import com.aedans.engine.renderer.Renderer;
 import com.aedans.engine.renderer.data.TexturedModel;
-import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.Renderable;
 
 /**
