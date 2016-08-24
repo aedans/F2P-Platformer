@@ -2,7 +2,6 @@ package com.aedans.engine.math;
 
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector2f;
-import org.lwjgl.util.vector.Vector3f;
 
 /**
  * Created by Aedan Smith on 7/23/2016.

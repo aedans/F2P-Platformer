@@ -1,4 +1,6 @@
 import com.aedans.engine.renderer.DisplayManager;
+import com.aedans.engine.renderer.Loader;
+import com.aedans.engine.renderer.Renderer;
 import com.aedans.platformer.Game;
 
 /**
@@ -17,6 +19,7 @@ public class Main {
     public static void main(String[] args){
         try {
             DisplayManager.createDisplay(Integer.parseInt(args[0]), Integer.parseInt(args[1]), false, "F2P Platformer");
+            Loader.setOutput(System.out);
             new Game().run();
         } catch (Exception e){
             System.out.print("Could not initialize game: ");

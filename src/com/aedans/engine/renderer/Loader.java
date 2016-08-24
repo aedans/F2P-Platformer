@@ -11,6 +11,7 @@ import org.newdawn.slick.opengl.TextureLoader;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
@@ -18,6 +19,14 @@ import java.util.List;
 
 public class Loader {
 
+    /**
+     * The PrintStream for the Loader to output to.
+     */
+    private static PrintStream output = null;
+
+    /**
+     * The directory of the images.
+     */
     private static String RES_DIR = "assets/imgs/";
 
     /**
@@ -38,23 +47,24 @@ public class Loader {
     /**
      * Loads a Model to the VAO.
      *
-     * @param positions: The positions of the vertices.
+     * @param vertices: The vertices of the vertices.
      * @param indices:   The indices of the Model.
      * @return int: The location at which the Model is stored in OpenGL.
      */
     @SuppressWarnings("WeakerAccess")
-    public static int loadToVAO(float[] positions, int[] indices) {
-        int i = Models.contains(positions, indices);
+    public static int loadToVAO(float[] vertices, int[] indices) {
+        int i = Models.contains(vertices, indices);
         if (i == -1) {
             float[] textures = new float[]{
                     0, 0, 0, 1, 1, 1, 1, 0
             };
             int vaoID = createVAO();
             bindIndicesBuffer(indices);
-            storeDataInAttributeList(0, 3, positions);
+            storeDataInAttributeList(0, 3, vertices);
             storeDataInAttributeList(1, 2, textures);
             unbindVAO();
-            Models.add(positions, indices);
+            Models.add(vertices, indices);
+            printf("Loaded Model (%d vertices, %d indices) to ModelID %d", vertices.length, indices.length, Models.size);
             return vaoID;
         } else {
             // OpenGL's VAO and VBO IDs are not 0-based.
@@ -98,7 +108,7 @@ public class Loader {
             Texture texture = TextureLoader.getTexture("PNG", new FileInputStream(RES_DIR + fileName + ".png"));
             int textureID = texture.getTextureID();
             textures.add(textureID);
-            System.out.println("Loaded texture \"" + fileName + ".png\" to TextureID " + textureID);
+            printf("Loaded Texture \"%s.png\" to TextureID %d", fileName, textureID);
             return textureID;
         } catch (IOException e) {
             e.printStackTrace();
@@ -117,7 +127,7 @@ public class Loader {
             Texture texture = TextureLoader.getTexture("JPG", new FileInputStream(RES_DIR + fileName + ".jpg"));
             int textureID = texture.getTextureID();
             textures.add(textureID);
-            System.out.println("Loaded texture \"" + fileName + ".jpeg\" to TextureID " + textureID);
+            printf("Loaded Texture \"%s.jpg\" to TextureID %d", fileName, textureID);
             return textureID;
         } catch (IOException e) {
             e.printStackTrace();
@@ -130,8 +140,11 @@ public class Loader {
      */
     public static void cleanUp() {
         vaos.forEach(GL30::glDeleteVertexArrays);
+        printf("Cleaned up VAOs.");
         vbos.forEach(GL15::glDeleteBuffers);
+        printf("Cleaned up VBOs.");
         textures.forEach(GL11::glDeleteTextures);
+        printf("Cleaned up Textures.");
     }
 
     /**
@@ -182,6 +195,21 @@ public class Loader {
         buffer.put(data);
         buffer.flip();
         return buffer;
+    }
+
+    /**
+     * Sets the Loader output to a given PrintStream.
+     *
+     * @param printStream: The PrintStream to print to.
+     */
+    public static void setOutput(PrintStream printStream){
+        output = printStream;
+    }
+
+    private static void printf(String s, Object... args){
+        if (output != null) {
+            output.printf(s + "\n", args);
+        }
     }
 
 }

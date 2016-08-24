@@ -14,7 +14,7 @@ public class Models {
     /**
      * The number of Models.
      */
-    private static int size = 0;
+    public static int size = 0;
 
     /**
      * The list of Model vertices that the Game is using.
@@ -34,7 +34,6 @@ public class Models {
     public static void add(float[] vertices, int[] indices){
         modelVertices.add(vertices);
         modelIndices.add(indices);
-        System.out.printf("Loaded Model (%d vertices, %d indices) to ModelID %d\n", vertices.length, indices.length, size);
         size++;
     }
 
