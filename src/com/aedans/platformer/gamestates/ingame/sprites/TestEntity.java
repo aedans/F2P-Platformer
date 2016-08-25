@@ -1,6 +1,6 @@
 package com.aedans.platformer.gamestates.ingame.sprites;
 
-import com.aedans.engine.sprites.Sprite;
+import com.aedans.engine.entities.Entity;
 import com.aedans.engine.renderer.resources.TexturedModel;
 import com.aedans.engine.renderer.resources.Textures;
 
@@ -10,15 +10,10 @@ import com.aedans.engine.renderer.resources.Textures;
  * A test Sprite to test the Renderer.
  */
 
-public class TestSprite extends Sprite {
+public class TestEntity extends Entity {
 
-    public TestSprite(float x, float y, String textureName) {
+    public TestEntity(float x, float y, String textureName) {
         super(x, y, TexturedModel.getTexturedModel(.1f, .1f, Textures.getTexture(textureName)));
-    }
-
-    @Override
-    public void update() {
-
     }
 
 }

@@ -4,6 +4,7 @@ import com.aedans.engine.renderer.Renderer;
 import com.aedans.engine.renderer.resources.Textures;
 import com.aedans.engine.statebasedgame.GameState;
 import com.aedans.platformer.gamestates.ingame.sprites.EntityBox;
+import com.aedans.platformer.gamestates.ingame.sprites.TestEntity;
 import com.aedans.platformer.gamestates.ingame.sprites.entities.Player;
 
 /**
@@ -25,7 +26,8 @@ public class InGameState extends GameState {
             e.printStackTrace();
         }
         entityBox = new EntityBox(Textures.getNumTextures());
-        player = new Player();
+        entityBox.add(new TestEntity(.5f, 0f, "test1"));
+        player = new Player(entityBox);
     }
 
     @Override

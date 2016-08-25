@@ -15,9 +15,11 @@ import java.util.ArrayList;
 public abstract class Entity extends Sprite {
 
     private ArrayList<Component<Entity>> components = new ArrayList<>();
+    private BoundingBox boundingBox;
 
     public Entity(float x, float y, TexturedModel texturedModel) {
         super(x, y, texturedModel);
+        calculateBoundingBox();
     }
 
     public void update(){
@@ -26,8 +28,21 @@ public abstract class Entity extends Sprite {
         }
     }
 
+    public void translate(float x, float y){
+        super.translate(x, y);
+        calculateBoundingBox();
+    }
+
+    protected void calculateBoundingBox(){
+        boundingBox = new BoundingBox(getX()-getWidth()/2, getY()-getHeight()/2, getWidth(), getHeight());
+    }
+
     public void addComponent(Component<Entity> component){
         components.add(component);
+    }
+
+    public BoundingBox getBoundingBox() {
+        return boundingBox;
     }
 
 }

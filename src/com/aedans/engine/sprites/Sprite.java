@@ -6,8 +6,6 @@ import com.aedans.engine.renderer.resources.TexturedModel;
 import org.lwjgl.util.Renderable;
 import org.lwjgl.util.vector.Matrix4f;
 
-import java.awt.geom.Point2D;
-
 /**
  * Created by Aedan Smith on 8/23/2016.
  *
@@ -17,15 +15,12 @@ import java.awt.geom.Point2D;
 public abstract class Sprite implements Renderable {
 
     private TexturedModel texturedModel;
-    private Point2D.Float position;
+    private float x, y;
 
     public Sprite(float x, float y, TexturedModel texturedModel){
-        this(new Point2D.Float(x, y), texturedModel);
-    }
-
-    public Sprite(Point2D.Float position, TexturedModel texturedModel){
+        this.x = x;
+        this.y = y;
         this.texturedModel = texturedModel;
-        this.position = position;
     }
 
     public void render(){
@@ -34,12 +29,29 @@ public abstract class Sprite implements Renderable {
         Renderer.drawElements();
     }
 
-    public Point2D.Float getPosition(){
-        return position;
+    public void translate(float x, float y) {
+        this.x += x;
+        this.y += y;
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public float getWidth(){
+        return texturedModel.getWidth();
+    }
+
+    public float getHeight(){
+        return texturedModel.getHeight();
     }
 
     public Matrix4f getTransformationMatrix(){
-        return MatrixMath.createTransformationMatrix((float) position.getX(), (float) position.getY());
+        return MatrixMath.createTransformationMatrix(x, y);
     }
 
     public TexturedModel getTexturedModel() {
@@ -47,6 +59,5 @@ public abstract class Sprite implements Renderable {
     }
 
     public abstract void update();
-
 
 }

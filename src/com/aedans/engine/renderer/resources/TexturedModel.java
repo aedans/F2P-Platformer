@@ -78,8 +78,8 @@ public class TexturedModel {
                 (vps[3] > vps[5]) ? vps[3] : vps[5]
         );
         return new TexturedModel(
-                (topRight.x - bottomLeft.x) / 2,
-                (topRight.y - bottomLeft.y) / 2,
+                (topRight.x - bottomLeft.x),
+                (topRight.y - bottomLeft.y),
                 Loader.loadToVAO(
                         new float[]{
                                 vps[0], vps[1], 0,

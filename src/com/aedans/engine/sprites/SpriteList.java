@@ -5,6 +5,7 @@ import com.aedans.engine.renderer.Renderer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * Created by Aedan Smith on 8/24/2016.
@@ -87,6 +88,23 @@ public abstract class SpriteList<T extends Sprite> {
     @SafeVarargs
     public final void remove(T... sprites) {
         Collections.addAll(toRemove, sprites);
+    }
+
+    /**
+     * Applies the function to all Sprites.
+     *
+     * @param iterator: Function to be applied once for every Sprite. Takes the Sprite as an argument, returns
+     *                true if the iterator should stop iterating.
+     * @return The Sprite that the iterator stopped iterating on. Null if the iterator iterated through everything.
+     */
+    public T iterate(Function<T, Boolean> iterator){
+        for (ArrayList<T> ts : sprites){
+            for (T t : ts){
+                if (iterator.apply(t))
+                    return t;
+            }
+        }
+        return null;
     }
 
     /**

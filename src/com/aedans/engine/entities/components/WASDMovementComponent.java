@@ -36,9 +36,9 @@ public class WASDMovementComponent implements Component<Entity> {
         if (Keyboard.isKeyDown(Keyboard.KEY_S)){
             yTranslation -= verticalSpeed;
         }
-        entity.getPosition().setLocation(
-                entity.getPosition().getX() + xTranslation * m,
-                entity.getPosition().getY() + yTranslation * m
+        entity.translate(
+                xTranslation * m,
+                yTranslation * m
         );
         this.lastTranslated = System.currentTimeMillis();
     }
