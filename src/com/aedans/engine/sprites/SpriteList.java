@@ -1,8 +1,6 @@
-package com.aedans.engine.renderer.data;
+package com.aedans.engine.sprites;
 
-import com.aedans.engine.Sprite;
 import com.aedans.engine.renderer.Renderer;
-import org.lwjgl.util.Renderable;
 
 import java.util.ArrayList;
 import java.util.Collections;

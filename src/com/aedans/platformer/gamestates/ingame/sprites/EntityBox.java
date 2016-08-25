@@ -1,7 +1,7 @@
 package com.aedans.platformer.gamestates.ingame.sprites;
 
-import com.aedans.engine.Sprite;
-import com.aedans.engine.renderer.data.SpriteList;
+import com.aedans.engine.entities.Entity;
+import com.aedans.engine.sprites.SpriteList;
 
 /**
  * Created by Aedan Smith on 8/24/2016.
@@ -9,24 +9,24 @@ import com.aedans.engine.renderer.data.SpriteList;
  * Class containing all in-game sprites.
  */
 
-public class SpriteBox extends SpriteList<Sprite> {
+public class EntityBox extends SpriteList<Entity> {
 
     /**
-     * Default SpriteBox constructor.
+     * Default EntityBox constructor.
      *
      * @param numTextures : The number of resources the SpriteList should support.
      */
-    public SpriteBox(int numTextures) {
+    public EntityBox(int numTextures) {
         super(numTextures);
     }
 
     @Override
-    protected void onAdd(Sprite sprite) {
+    protected void onAdd(Entity entity) {
 
     }
 
     @Override
-    protected void onRemove(Sprite sprite) {
+    protected void onRemove(Entity entity) {
 
     }
 

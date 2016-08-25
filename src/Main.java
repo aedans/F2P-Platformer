@@ -20,7 +20,7 @@ public class Main {
         try {
             DisplayManager.createDisplay(Integer.parseInt(args[0]), Integer.parseInt(args[1]), false, "F2P Platformer");
             Loader.setOutput(System.out);
-            Renderer.setOutput(System.out);
+//            Renderer.setOutput(System.out);
             new Game().run();
         } catch (Exception e){
             System.out.print("Could not initialize game: ");

@@ -1,4 +1,4 @@
-package com.aedans.engine;
+package com.aedans.engine.sprites;
 
 import com.aedans.engine.math.MatrixMath;
 import com.aedans.engine.renderer.Renderer;
@@ -15,7 +15,7 @@ import org.lwjgl.util.vector.Matrix4f;
 public abstract class Sprite implements Renderable {
 
     private TexturedModel texturedModel;
-    public float x, y;
+    private float x, y;
 
     public Sprite(float x, float y, TexturedModel texturedModel){
         this.texturedModel = texturedModel;
@@ -27,6 +27,14 @@ public abstract class Sprite implements Renderable {
         Renderer.compositeShader.loadTransformationMatrix(getTransformationMatrix());
         Renderer.loadTexturedModel(texturedModel);
         Renderer.drawElements();
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
     }
 
     public Matrix4f getTransformationMatrix(){

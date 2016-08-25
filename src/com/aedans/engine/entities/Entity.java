@@ -1,19 +1,21 @@
 package com.aedans.engine.entities;
 
-import com.aedans.engine.Sprite;
+import com.aedans.engine.sprites.Sprite;
 import com.aedans.engine.renderer.resources.TexturedModel;
+import javafx.geometry.BoundingBox;
 
 import java.util.ArrayList;
 
 /**
  * Created by Aedan Smith on 8/23/2016.
  *
- * Abstract class for Entities that can be rendered by the Renderable.
+ * Abstract class for Entities that can be rendered by the Renderer.
  */
 
 public abstract class Entity extends Sprite {
 
     private ArrayList<Component<Entity>> components = new ArrayList<>();
+    private BoundingBox boundingBox;
 
     public Entity(float x, float y, TexturedModel texturedModel) {
         super(x, y, texturedModel);
