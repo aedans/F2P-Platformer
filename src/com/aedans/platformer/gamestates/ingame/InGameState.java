@@ -27,6 +27,7 @@ public class InGameState extends GameState {
         }
         entityBox = new EntityBox(Textures.getNumTextures());
         entityBox.add(new TestEntity(.5f, 0f, "test1"));
+        entityBox.add(new TestEntity(0, -.2f, "test1"));
         player = new Player(entityBox);
     }
 
