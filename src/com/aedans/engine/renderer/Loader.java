@@ -1,6 +1,6 @@
 package com.aedans.engine.renderer;
 
-import com.aedans.engine.renderer.data.Models;
+import com.aedans.engine.renderer.resources.Models;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL15;
@@ -148,11 +148,11 @@ public class Loader {
     }
 
     /**
-     * Stores data in a VBO.
+     * Stores resources in a VBO.
      *
-     * @param attributeNumber: The VBO to store the data in.
-     * @param infosize:        The number of indexes used to store a piece of data.
-     * @param data:            The data to store.
+     * @param attributeNumber: The VBO to store the resources in.
+     * @param infosize:        The number of indexes used to store a piece of resources.
+     * @param data:            The resources to store.
      */
     private static void storeDataInAttributeList(int attributeNumber, int infosize, float[] data) {
         int vboID = GL15.glGenBuffers();
@@ -172,9 +172,9 @@ public class Loader {
     }
 
     /**
-     * Creates an IntBuffer with the given data.
+     * Creates an IntBuffer with the given resources.
      *
-     * @param data: The data to store in the IntBuffer.
+     * @param data: The resources to store in the IntBuffer.
      * @return IntBuffer: The created IntBuffer.
      */
     private static IntBuffer storeDataInIntBuffer(int[] data) {
@@ -185,9 +185,9 @@ public class Loader {
     }
 
     /**
-     * Creates an FloatBuffer with the given data.
+     * Creates an FloatBuffer with the given resources.
      *
-     * @param data: The data to store in the FloatBuffer.
+     * @param data: The resources to store in the FloatBuffer.
      * @return FloatBuffer: The created FloatBuffer.
      */
     private static FloatBuffer storeDataInFloatBuffer(float[] data) {

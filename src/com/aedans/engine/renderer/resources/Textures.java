@@ -1,4 +1,4 @@
-package com.aedans.engine.renderer.data;
+package com.aedans.engine.renderer.resources;
 
 import com.aedans.engine.renderer.Loader;
 
@@ -57,6 +57,10 @@ public class Textures {
             return textureNames.size();
         }
         throw new Exception("Could not load texture \"" + fileName + "\"");
+    }
+
+    public static int getNumTextures(){
+        return textureNames.size();
     }
 
 }

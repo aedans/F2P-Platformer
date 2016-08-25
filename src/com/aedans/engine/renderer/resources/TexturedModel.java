@@ -1,4 +1,4 @@
-package com.aedans.engine.renderer.data;
+package com.aedans.engine.renderer.resources;
 
 import com.aedans.engine.renderer.Loader;
 

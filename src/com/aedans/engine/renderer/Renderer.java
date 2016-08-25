@@ -1,8 +1,7 @@
 package com.aedans.engine.renderer;
 
-import com.aedans.engine.renderer.data.TexturedModel;
+import com.aedans.engine.renderer.resources.TexturedModel;
 import com.aedans.engine.renderer.shaders.CompositeShader;
-import com.aedans.engine.renderer.shaders.Shader;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL20;
@@ -42,6 +41,7 @@ public class Renderer {
         // Enables Transparency.
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+
         GL13.glActiveTexture(GL13.GL_TEXTURE0);
     }
 
@@ -52,8 +52,6 @@ public class Renderer {
         // Clears the Display.
         GL11.glClearColor(0, 0, 0, 1);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
-        GL20.glEnableVertexAttribArray(0);
-        GL20.glEnableVertexAttribArray(1);
         compositeShader.start();
         printf("Began rendering frame %d", frameNum);
     }
@@ -75,6 +73,8 @@ public class Renderer {
      * @param texturedModel: The TexturedModel to load.
      */
     public static void loadTexturedModel(TexturedModel texturedModel){
+        GL20.glEnableVertexAttribArray(0);
+        GL20.glEnableVertexAttribArray(1);
         if (texturedModel.getModelID() != currentModelID) {
             GL30.glBindVertexArray(texturedModel.getModelID());
             printf("Loaded Model %d", texturedModel.getModelID());
@@ -92,6 +92,7 @@ public class Renderer {
      */
     public static void drawElements() {
         GL11.glDrawElements(GL11.GL_TRIANGLES, 8, GL11.GL_UNSIGNED_INT, 0);
+        printf("Drew elements");
     }
 
     public static void cleanUp(){

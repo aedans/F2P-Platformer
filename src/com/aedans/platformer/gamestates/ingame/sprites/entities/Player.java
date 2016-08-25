@@ -1,9 +1,11 @@
 package com.aedans.platformer.gamestates.ingame.sprites.entities;
 
 import com.aedans.engine.entities.Entity;
-import com.aedans.engine.renderer.data.TexturedModel;
-import com.aedans.engine.renderer.data.Textures;
+import com.aedans.engine.renderer.DisplayManager;
+import com.aedans.engine.renderer.resources.TexturedModel;
+import com.aedans.engine.renderer.resources.Textures;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
 
 /**
  * Created by Aedan Smith on 8/23/2016.

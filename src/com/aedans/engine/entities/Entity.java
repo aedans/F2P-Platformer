@@ -1,7 +1,7 @@
 package com.aedans.engine.entities;
 
 import com.aedans.engine.Sprite;
-import com.aedans.engine.renderer.data.TexturedModel;
+import com.aedans.engine.renderer.resources.TexturedModel;
 
 import java.util.ArrayList;
 

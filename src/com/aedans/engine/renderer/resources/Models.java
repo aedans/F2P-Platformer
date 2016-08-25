@@ -1,4 +1,4 @@
-package com.aedans.engine.renderer.data;
+package com.aedans.engine.renderer.resources;
 
 import java.util.ArrayList;
 import java.util.Arrays;
