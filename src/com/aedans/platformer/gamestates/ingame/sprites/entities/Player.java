@@ -1,6 +1,7 @@
 package com.aedans.platformer.gamestates.ingame.sprites.entities;
 
 import com.aedans.engine.entities.Entity;
+import com.aedans.engine.entities.components.WASDMovementComponent;
 import com.aedans.engine.renderer.resources.TexturedModel;
 import com.aedans.engine.renderer.resources.Textures;
 
@@ -14,9 +15,7 @@ public class Player extends Entity {
 
     public Player() {
         super(0, 0, TexturedModel.getTexturedModel(.08f, .08f, Textures.getTexture("player")));
-        this.addComponent(entity -> {
-
-        });
+        this.addComponent(new WASDMovementComponent(1.5f, 0));
     }
 
 }

@@ -4,7 +4,6 @@ import com.aedans.engine.renderer.Renderer;
 import com.aedans.engine.renderer.resources.Textures;
 import com.aedans.engine.statebasedgame.GameState;
 import com.aedans.platformer.gamestates.ingame.sprites.EntityBox;
-import com.aedans.platformer.gamestates.ingame.sprites.TestSprite;
 import com.aedans.platformer.gamestates.ingame.sprites.entities.Player;
 
 /**
@@ -15,7 +14,7 @@ import com.aedans.platformer.gamestates.ingame.sprites.entities.Player;
 
 public class InGameState extends GameState {
 
-    private EntityBox spriteBox;
+    private EntityBox entityBox;
     private Player player;
 
     public InGameState(){
@@ -25,20 +24,20 @@ public class InGameState extends GameState {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        spriteBox = new EntityBox(Textures.getNumTextures());
+        entityBox = new EntityBox(Textures.getNumTextures());
         player = new Player();
     }
 
     @Override
     public void update() {
-        spriteBox.update();
+        entityBox.update();
         player.update();
     }
 
     @Override
     public void render() {
         Renderer.beginRender();
-        spriteBox.render();
+        entityBox.render();
         player.render();
         Renderer.endRender();
     }

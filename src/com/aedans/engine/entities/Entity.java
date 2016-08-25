@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public abstract class Entity extends Sprite {
 
     private ArrayList<Component<Entity>> components = new ArrayList<>();
-    private BoundingBox boundingBox;
 
     public Entity(float x, float y, TexturedModel texturedModel) {
         super(x, y, texturedModel);

@@ -14,7 +14,7 @@ public class EntityBox extends SpriteList<Entity> {
     /**
      * Default EntityBox constructor.
      *
-     * @param numTextures : The number of resources the SpriteList should support.
+     * @param numTextures : The number of textures the EntityBox should support.
      */
     public EntityBox(int numTextures) {
         super(numTextures);

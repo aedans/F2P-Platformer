@@ -3,6 +3,8 @@ package com.aedans.engine.math;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector2f;
 
+import java.awt.geom.Point2D;
+
 /**
  * Created by Aedan Smith on 7/23/2016.
  *
