@@ -23,13 +23,15 @@ public class GravityComponent implements Component<Entity> {
 
     @Override
     public void apply(Entity entity) {
-//        CollisionDetails cd = entityBox.getCollision(entity);
-//        if (cd != null){
-//            entity.yVel = 0;
-//            entity.setPosition(entity.getX(), cd.getCollisionY());
-//            return;
-//        }
-//        entity.yVel -= weight;
+        CollisionDetails cd = entityBox.getCollision(entity);
+        if (cd != null){
+            if (cd.getSide() == CollisionDetails.Side.TOP) {
+                entity.yVel = 0;
+                entity.setPosition(cd.getCollisionX(), cd.getCollisionY());
+                return;
+            }
+        }
+        entity.yVel -= weight;
     }
 
 }

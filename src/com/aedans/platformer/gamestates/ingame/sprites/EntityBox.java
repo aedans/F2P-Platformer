@@ -7,6 +7,7 @@ import com.aedans.platformer.gamestates.ingame.sprites.entities.Player;
 import org.lwjgl.util.vector.Vector;
 import org.lwjgl.util.vector.Vector2f;
 
+import java.util.ArrayList;
 import java.util.function.Function;
 
 /**
@@ -15,6 +16,7 @@ import java.util.function.Function;
  * Class containing all in-game sprites.
  */
 
+@SuppressWarnings("ALL")
 public class EntityBox extends SpriteList<Entity> {
 
     /**
@@ -58,16 +60,20 @@ public class EntityBox extends SpriteList<Entity> {
                 e1bot = e1.getY() - e1.getHeight() / 2 + e1.yVel,
                 e1left = e1.getX() - e1.getWidth() / 2 + e1.xVel,
                 e1right = e1.getX() + e1.getWidth() / 2 + e1.xVel;
-        Entity e2 = iterate(e21 -> {
-            float e2hh = e21.getHeight() / 2, e2hw = e21.getWidth() / 2;
-            return e1bot < e21.getY() + e2hh
-                    && e1top > e21.getY() - e2hh
-                    && e1right > e21.getX() - e2hw
-                    && e1left < e21.getX() + e2hw;
+        ArrayList<Entity> es = new ArrayList<>();
+        iterate(entity -> {
+            float e2hh = entity.getHeight() / 2, e2hw = entity.getWidth() / 2;
+            if (e1bot < entity.getY() + e2hh
+                    && e1top > entity.getY() - e2hh
+                    && e1right > entity.getX() - e2hw
+                    && e1left < entity.getX() + e2hw)
+                es.add(entity);
+            return false;
         });
-        if (e2 == null)
+        if (es.size() == 0)
             return null;
-        else {
+        else if (es.size() == 1){
+            Entity e2 = es.get(0);
             float xDist = e1.getX()-e2.getX(),
                     yDist = (e1.getY()-e2.getY())*(e2.getWidth()/e2.getHeight());
             if (xDist > yDist) {
@@ -83,6 +89,40 @@ public class EntityBox extends SpriteList<Entity> {
                     return new CollisionDetails(e1, e2, CollisionDetails.Side.LEFT);
                 }
             }
+        } else {
+            Entity e2 = es.get(0), e3 = es.get(1);
+            CollisionDetails.Side side1, side2;
+            float xDist = e1.getX()-e2.getX(),
+                    yDist = (e1.getY()-e2.getY())*(e2.getWidth()/e2.getHeight());
+            if (xDist > yDist) {
+                if (xDist > -yDist) {
+                    side1 = CollisionDetails.Side.RIGHT;
+                } else {
+                    side1 = CollisionDetails.Side.BOTTOM;
+                }
+            } else {
+                if (xDist > -yDist){
+                    side1 = CollisionDetails.Side.TOP;
+                } else {
+                    side1 = CollisionDetails.Side.LEFT;
+                }
+            }
+            xDist = e1.getX()-e3.getX();
+            yDist = (e1.getY()-e3.getY())*(e3.getWidth()/e3.getHeight());
+            if (xDist > yDist) {
+                if (xDist > -yDist) {
+                    side2 = CollisionDetails.Side.RIGHT;
+                } else {
+                    side2 = CollisionDetails.Side.BOTTOM;
+                }
+            } else {
+                if (xDist > -yDist){
+                    side2 = CollisionDetails.Side.TOP;
+                } else {
+                    side2 = CollisionDetails.Side.LEFT;
+                }
+            }
+            return new CollisionDetails(e1, e2, e3, side1, side2);
         }
     }
 
