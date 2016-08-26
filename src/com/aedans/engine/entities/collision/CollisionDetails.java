@@ -40,31 +40,31 @@ public class CollisionDetails {
         this.side = Side.MULTI;
         switch (side1) {
             case TOP:
-                collisionY = (e1.getY() + e1.getHeight() / 2 + e2.getY() + e2.getHeight() / 2) / 2 - e1.yVel;
+                collisionY = (e1.getY() + e1.getHeight() / 2 + e2.getY() + e2.getHeight() / 2) / 2;
                 break;
             case BOTTOM:
-                collisionY = (e1.getY() - e1.getHeight() / 2 + e2.getY() - e2.getHeight() / 2) / 2 - e1.yVel;
+                collisionY = (e1.getY() - e1.getHeight() / 2 + e2.getY() - e2.getHeight() / 2) / 2;
                 break;
             case LEFT:
-                collisionX = (e1.getX() - e1.getWidth() / 2 + e2.getX() - e2.getWidth() / 2) / 2 - e1.xVel;
+                collisionX = (e1.getX() - e1.getWidth() / 2 + e2.getX() - e2.getWidth() / 2) / 2;
                 break;
             case RIGHT:
-                collisionX = (e1.getX() + e1.getWidth() / 2 + e2.getX() + e2.getWidth() / 2) / 2 - e1.xVel;
+                collisionX = (e1.getX() + e1.getWidth() / 2 + e2.getX() + e2.getWidth() / 2) / 2;
                 break;
             default:break;
         }
         switch (side2) {
             case TOP:
-                collisionY = (e1.getY() + e1.getHeight() / 2 + e3.getY() + e3.getHeight() / 2) / 2 - e1.yVel;
+                collisionY = (e1.getY() + e1.getHeight() / 2 + e3.getY() + e3.getHeight() / 2) / 2;
                 break;
             case BOTTOM:
-                collisionY = (e1.getY() - e1.getHeight() / 2 + e3.getY() - e3.getHeight() / 2) / 2 - e1.yVel;
+                collisionY = (e1.getY() - e1.getHeight() / 2 + e3.getY() - e3.getHeight() / 2) / 2;
                 break;
             case LEFT:
-                collisionX = (e1.getX() - e1.getWidth() / 2 + e3.getX() - e3.getWidth() / 2) / 2 - e1.xVel;
+                collisionX = (e1.getX() - e1.getWidth() / 2 + e3.getX() - e3.getWidth() / 2) / 2;
                 break;
             case RIGHT:
-                collisionX = (e1.getX() + e1.getWidth() / 2 + e3.getX() + e3.getWidth() / 2) / 2 - e1.xVel;
+                collisionX = (e1.getX() + e1.getWidth() / 2 + e3.getX() + e3.getWidth() / 2) / 2;
                 break;
             default:break;
         }

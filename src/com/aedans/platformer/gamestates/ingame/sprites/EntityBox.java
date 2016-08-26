@@ -12,7 +12,6 @@ import java.util.ArrayList;
  * Class containing all in-game sprites.
  */
 
-@SuppressWarnings("ALL")
 public class EntityBox extends SpriteList<Entity> {
 
     /**

@@ -29,6 +29,10 @@ public class CollisionComponent implements Component<Entity> {
             if (cd.getSide() == CollisionDetails.Side.LEFT || cd.getSide() == CollisionDetails.Side.RIGHT){
                 entity.xVel = 0;
             }
+            if (cd.getSide() == CollisionDetails.Side.MULTI){
+                entity.xVel = 0;
+                entity.yVel = 0;
+            }
         }
     }
 
