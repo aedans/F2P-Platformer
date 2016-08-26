@@ -10,34 +10,26 @@ import org.lwjgl.input.Keyboard;
  * Class for adding WASD movement to an Entity.
  */
 
-public class WASDMovementComponent implements Component<Entity> {
+public class ADMovementComponent implements Component<Entity> {
 
     private long lastTranslated = System.currentTimeMillis();
-    private float horizontalSpeed, verticalSpeed;
+    private float horizontalSpeed;
 
-    public WASDMovementComponent(float horizontalSpeed, float verticalSpeed){
+    public ADMovementComponent(float horizontalSpeed){
         this.horizontalSpeed = horizontalSpeed;
-        this.verticalSpeed = verticalSpeed;
     }
 
     @Override
     public void apply(Entity entity) {
         float m = (float) (System.currentTimeMillis() - lastTranslated) / 1000;
-        float xTranslation = 0, yTranslation = 0;
+        float xTranslation = 0;
         if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
             xTranslation -= horizontalSpeed;
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_D)){
             xTranslation += horizontalSpeed;
         }
-        if (Keyboard.isKeyDown(Keyboard.KEY_W)){
-            yTranslation += verticalSpeed;
-        }
-        if (Keyboard.isKeyDown(Keyboard.KEY_S)){
-            yTranslation -= verticalSpeed;
-        }
         entity.xVel = xTranslation * m;
-        entity.yVel = yTranslation * m;
         this.lastTranslated = System.currentTimeMillis();
     }
 

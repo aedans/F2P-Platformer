@@ -23,6 +23,12 @@ public class CollisionComponent implements Component<Entity> {
         CollisionDetails cd = entityBox.getCollision(entity);
         if (cd != null){
             entity.setPosition(cd.getCollisionX(), cd.getCollisionY());
+            if (cd.getSide() == CollisionDetails.Side.TOP || cd.getSide() == CollisionDetails.Side.BOTTOM){
+                entity.yVel = 0;
+            }
+            if (cd.getSide() == CollisionDetails.Side.LEFT || cd.getSide() == CollisionDetails.Side.RIGHT){
+                entity.xVel = 0;
+            }
         }
     }
 

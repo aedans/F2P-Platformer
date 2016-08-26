@@ -26,7 +26,6 @@ public class GravityComponent implements Component<Entity> {
         CollisionDetails cd = entityBox.getCollision(entity);
         if (cd != null){
             if (cd.getSide() == CollisionDetails.Side.TOP) {
-                entity.yVel = 0;
                 entity.setPosition(cd.getCollisionX(), cd.getCollisionY());
                 return;
             }

@@ -3,11 +3,14 @@ package com.aedans.platformer.gamestates.ingame.sprites.entities;
 import com.aedans.engine.entities.Component;
 import com.aedans.engine.entities.Entity;
 import com.aedans.engine.entities.collision.CollisionComponent;
+import com.aedans.engine.entities.collision.CollisionDetails;
+import com.aedans.engine.entities.components.ADMovementComponent;
 import com.aedans.engine.entities.components.GravityComponent;
 import com.aedans.engine.entities.components.WASDMovementComponent;
 import com.aedans.engine.renderer.resources.TexturedModel;
 import com.aedans.engine.renderer.resources.Textures;
 import com.aedans.platformer.gamestates.ingame.sprites.EntityBox;
+import org.lwjgl.input.Keyboard;
 
 /**
  * Created by Aedan Smith on 8/23/2016.
@@ -19,17 +22,17 @@ public class Player extends Entity {
 
     public Player(EntityBox entityBox) {
         super(0, 0, TexturedModel.getTexturedModel(.08f, .08f, Textures.getTexture("player")));
-        this.addComponent(new WASDMovementComponent(1.5f, 1.5f));
+        this.addComponent(new ADMovementComponent(1.5f));
         this.addComponent(new CollisionComponent(entityBox));
-//        this.addComponent(new GravityComponent(entityBox, .0008f));
-//        this.addComponent(new Component<Entity>() {
-//            @Override
-//            public void apply(Entity entity) {
-//                if (Keyboard.isKeyDown(Keyboard.KEY_SPACE) && entityBox.getCollisionTop(Player.this) != null){
-//                    entity.yVel += .03f;
-//                }
-//            }
-//        });
+        this.addComponent(new GravityComponent(entityBox, .0010f));
+        this.addComponent(entity -> {
+            if (Keyboard.isKeyDown(Keyboard.KEY_SPACE)){
+                CollisionDetails cd = entityBox.getCollision(Player.this);
+                if (cd != null && cd.getSide() == CollisionDetails.Side.TOP) {
+                    entity.yVel += .035f;
+                }
+            }
+        });
     }
 
 }

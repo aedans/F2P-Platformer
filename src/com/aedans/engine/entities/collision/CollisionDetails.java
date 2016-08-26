@@ -18,18 +18,18 @@ public class CollisionDetails {
         switch (side) {
             case TOP:
                 collisionX = e1.getX();
-                collisionY = (e1.getY() + e1.getHeight() / 2 + e2.getY() + e2.getHeight() / 2) / 2 - e1.yVel;
+                collisionY = (e1.getY() + e1.getHeight() / 2 + e2.getY() + e2.getHeight() / 2) / 2;
                 break;
             case BOTTOM:
                 collisionX = e1.getX();
-                collisionY = (e1.getY() - e1.getHeight() / 2 + e2.getY() - e2.getHeight() / 2) / 2 - e1.yVel;
+                collisionY = (e1.getY() - e1.getHeight() / 2 + e2.getY() - e2.getHeight() / 2) / 2;
                 break;
             case LEFT:
-                collisionX = (e1.getX() - e1.getWidth() / 2 + e2.getX() - e2.getWidth() / 2) / 2 - e1.xVel;
+                collisionX = (e1.getX() - e1.getWidth() / 2 + e2.getX() - e2.getWidth() / 2) / 2;
                 collisionY = e1.getY();
                 break;
             case RIGHT:
-                collisionX = (e1.getX() + e1.getWidth() / 2 + e2.getX() + e2.getWidth() / 2) / 2 - e1.xVel;
+                collisionX = (e1.getX() + e1.getWidth() / 2 + e2.getX() + e2.getWidth() / 2) / 2;
                 collisionY = e1.getY();
                 break;
             default:break;
