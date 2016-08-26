@@ -34,8 +34,9 @@ public class InGameState extends GameState {
         }
         entityBox = new EntityBox(Textures.getNumTextures());
         entityBox.add(new TestEntity(-.5f, -.7f, .2f, .3f, "test1"));
-        entityBox.add(new TestEntity(0, .2f, .2f, .5f, "test1"));
-        entityBox.add(new TestEntity(-1f, 0, .1f, 1, "test3"));
+        entityBox.add(new TestEntity(0, .1f, .2f, .1f, "test1"));
+        entityBox.add(new TestEntity(-1, 0, .05f, 1, "test3"));
+        entityBox.add(new TestEntity(1, 0, .05f, 1, "test1"));
         entityBox.add(new TestEntity(0, -1f, 1f, .2f, "grassFloor"));
         player = new Player(entityBox);
     }
