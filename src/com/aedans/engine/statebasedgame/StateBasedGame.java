@@ -46,8 +46,7 @@ public abstract class StateBasedGame implements Runnable {
                 DisplayManager.updateDisplay();
                 getActiveGameState().update();
                 getActiveGameState().render();
-            } catch (IndexOutOfBoundsException e){
-                System.out.println("Fatal Error: Could not get game state with ID " + getActiveGameState());
+            } catch (Exception e){
                 e.printStackTrace(System.out);
                 Loader.cleanUp();
                 Renderer.cleanUp();

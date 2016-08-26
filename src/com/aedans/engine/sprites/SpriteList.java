@@ -20,7 +20,7 @@ public abstract class SpriteList<T extends Sprite> {
      */
     public int numTextures;
 
-    /**
+    /**sd
      * The list of Sprites to add on the next update(). Prevents Concurrent
      * Modification Exceptions.
      */
@@ -138,11 +138,11 @@ public abstract class SpriteList<T extends Sprite> {
     public void render(){
         onRender();
 
+        // TODO: Optimize
         for (ArrayList<T> sprites : this.sprites){
-            // TODO: Add multi-model support.
             if (sprites.size() != 0) {
-                Renderer.loadTexturedModel(sprites.get(0).getTexturedModel());
                 for (Sprite s : sprites) {
+                    Renderer.loadTexturedModel(s.getTexturedModel());
                     Renderer.compositeShader.loadTransformationMatrix(s.getTransformationMatrix());
                     Renderer.drawElements();
                 }

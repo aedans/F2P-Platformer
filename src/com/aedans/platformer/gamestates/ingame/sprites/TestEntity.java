@@ -12,8 +12,8 @@ import com.aedans.engine.renderer.resources.Textures;
 
 public class TestEntity extends Entity {
 
-    public TestEntity(float x, float y, String textureName) {
-        super(x, y, TexturedModel.getTexturedModel(.1f, .1f, Textures.getTexture(textureName)));
+    public TestEntity(float x, float y, float w, float h, String textureName) {
+        super(x, y, TexturedModel.getTexturedModel(w, h, Textures.getTexture(textureName)));
     }
 
 }
