@@ -24,14 +24,14 @@ public class Player extends Entity {
         super(0, 0, TexturedModel.getTexturedModel(.06f, .06f, Textures.getTexture("player")));
         this.addComponent(new ADMovementComponent(1.5f));
         this.addComponent(new CollisionComponent(entityBox));
-        this.addComponent(new GravityComponent(entityBox, .075f));
+        this.addComponent(new GravityComponent(entityBox, .035f));
         this.addComponent(new Component<Entity>() {
             @Override
             public void apply(Entity entity, long l) {
                 if (Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
                     CollisionDetails cd = entityBox.getCollision(Player.this);
                     if (cd != null && cd.getSide() == CollisionDetails.Side.TOP) {
-                        entity.yVel += .035f;
+                        entity.yVel += .02f;
                     }
                 }
             }
@@ -39,7 +39,10 @@ public class Player extends Entity {
         this.addComponent(new Component<Entity>() {
             @Override
             public void apply(Entity entity, long l) {
-                Viewport.setPosition(entity.getX()+entity.xVel, entity.getY()+entity.yVel);
+                Viewport.setPosition(
+                        entity.getX()+entity.xVel * ((float)l/10),
+                        entity.getY()+entity.yVel * ((float)l/10)
+                );
             }
         });
     }
