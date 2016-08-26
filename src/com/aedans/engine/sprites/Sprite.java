@@ -2,6 +2,7 @@ package com.aedans.engine.sprites;
 
 import com.aedans.engine.math.MatrixMath;
 import com.aedans.engine.renderer.Renderer;
+import com.aedans.engine.renderer.Viewport;
 import com.aedans.engine.renderer.resources.TexturedModel;
 import org.lwjgl.util.Renderable;
 import org.lwjgl.util.vector.Matrix4f;
@@ -56,7 +57,7 @@ public abstract class Sprite implements Renderable {
     }
 
     public Matrix4f getTransformationMatrix(){
-        return MatrixMath.createTransformationMatrix(x, y);
+        return MatrixMath.createTransformationMatrix(Viewport.getRelativePosition(x, y));
     }
 
     public TexturedModel getTexturedModel() {

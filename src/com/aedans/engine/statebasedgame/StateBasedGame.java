@@ -3,6 +3,7 @@ package com.aedans.engine.statebasedgame;
 import com.aedans.engine.renderer.DisplayManager;
 import com.aedans.engine.renderer.Loader;
 import com.aedans.engine.renderer.Renderer;
+import com.aedans.engine.renderer.Viewport;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,6 +46,7 @@ public abstract class StateBasedGame implements Runnable {
             try {
                 DisplayManager.updateDisplay();
                 getActiveGameState().update();
+                Viewport.update();
                 getActiveGameState().render();
             } catch (Exception e){
                 e.printStackTrace(System.out);

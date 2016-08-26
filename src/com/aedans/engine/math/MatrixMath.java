@@ -16,6 +16,19 @@ public class MatrixMath {
     /**
      * Creates a Transformation Matrix for an image at (0, 0).
      *
+     * @param point: The point to translate the image to.
+     * @return The matrix that translates an image at (0, 0) to the correct position.
+     */
+    public static Matrix4f createTransformationMatrix(Point2D.Float point){
+        Matrix4f matrix4f = new Matrix4f();
+        matrix4f.setIdentity();
+        Matrix4f.translate(new Vector2f(point.x, point.y), matrix4f, matrix4f);
+        return matrix4f;
+    }
+
+    /**
+     * Creates a Transformation Matrix for an image at (0, 0).
+     *
      * @param x: The X amount to translate the image.
      * @param y: The Y amount to translate the image.
      * @return The matrix that translates an image at (0, 0) to the correct position.
