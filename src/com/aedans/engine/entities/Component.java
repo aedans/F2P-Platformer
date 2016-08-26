@@ -8,6 +8,6 @@ package com.aedans.engine.entities;
 
 public interface Component<T> {
 
-    void apply(T t);
+    void apply(T t, long l);
 
 }

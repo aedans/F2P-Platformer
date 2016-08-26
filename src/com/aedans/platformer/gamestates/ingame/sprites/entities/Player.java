@@ -1,7 +1,7 @@
 package com.aedans.platformer.gamestates.ingame.sprites.entities;
 
 import com.aedans.engine.entities.Component;
-import com.aedans.engine.entities.Entity;
+import com.aedans.engine.Entity;
 import com.aedans.engine.entities.collision.CollisionComponent;
 import com.aedans.engine.entities.collision.CollisionDetails;
 import com.aedans.engine.entities.components.ADMovementComponent;
@@ -24,18 +24,21 @@ public class Player extends Entity {
         super(0, 0, TexturedModel.getTexturedModel(.06f, .06f, Textures.getTexture("player")));
         this.addComponent(new ADMovementComponent(1.5f));
         this.addComponent(new CollisionComponent(entityBox));
-        this.addComponent(new GravityComponent(entityBox, .0010f));
-        this.addComponent(entity -> {
-            if (Keyboard.isKeyDown(Keyboard.KEY_SPACE)){
-                CollisionDetails cd = entityBox.getCollision(Player.this);
-                if (cd != null && cd.getSide() == CollisionDetails.Side.TOP) {
-                    entity.yVel += .035f;
+        this.addComponent(new GravityComponent(entityBox, .075f));
+        this.addComponent(new Component<Entity>() {
+            @Override
+            public void apply(Entity entity, long l) {
+                if (Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
+                    CollisionDetails cd = entityBox.getCollision(Player.this);
+                    if (cd != null && cd.getSide() == CollisionDetails.Side.TOP) {
+                        entity.yVel += .035f;
+                    }
                 }
             }
         });
         this.addComponent(new Component<Entity>() {
             @Override
-            public void apply(Entity entity) {
+            public void apply(Entity entity, long l) {
                 Viewport.setPosition(entity.getX()+entity.xVel, entity.getY()+entity.yVel);
             }
         });

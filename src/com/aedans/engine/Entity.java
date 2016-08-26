@@ -1,8 +1,8 @@
-package com.aedans.engine.entities;
+package com.aedans.engine;
 
+import com.aedans.engine.entities.Component;
 import com.aedans.engine.sprites.Sprite;
 import com.aedans.engine.renderer.resources.TexturedModel;
-import javafx.geometry.BoundingBox;
 
 import java.util.ArrayList;
 
@@ -21,11 +21,11 @@ public abstract class Entity extends Sprite {
         super(x, y, texturedModel);
     }
 
-    public void update(){
+    public void update(long l){
         for (Component<Entity> ec : components){
-            ec.apply(this);
+            ec.apply(this, l);
         }
-        translate(xVel, yVel);
+        translate(xVel * ((float)l/10), yVel * ((float)l/10));
     }
 
     public void addComponent(Component<Entity> component){

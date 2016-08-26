@@ -64,6 +64,6 @@ public abstract class Sprite implements Renderable {
         return texturedModel;
     }
 
-    public abstract void update();
+    public abstract void update(long l);
 
 }

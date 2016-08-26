@@ -1,6 +1,6 @@
 package com.aedans.engine.entities.collision;
 
-import com.aedans.engine.entities.Entity;
+import com.aedans.engine.Entity;
 
 /**
  * Created by Aedan Smith on 8/25/2016.

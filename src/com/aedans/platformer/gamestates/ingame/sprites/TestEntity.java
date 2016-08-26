@@ -1,6 +1,6 @@
 package com.aedans.platformer.gamestates.ingame.sprites;
 
-import com.aedans.engine.entities.Entity;
+import com.aedans.engine.Entity;
 import com.aedans.engine.renderer.resources.TexturedModel;
 import com.aedans.engine.renderer.resources.Textures;
 

@@ -1,7 +1,7 @@
 package com.aedans.engine.entities.components;
 
 import com.aedans.engine.entities.Component;
-import com.aedans.engine.entities.Entity;
+import com.aedans.engine.Entity;
 import org.lwjgl.input.Keyboard;
 
 /**
@@ -12,7 +12,6 @@ import org.lwjgl.input.Keyboard;
 
 public class ADMovementComponent implements Component<Entity> {
 
-    private long lastTranslated = System.currentTimeMillis();
     private float horizontalSpeed;
 
     public ADMovementComponent(float horizontalSpeed){
@@ -20,8 +19,7 @@ public class ADMovementComponent implements Component<Entity> {
     }
 
     @Override
-    public void apply(Entity entity) {
-        float m = (float) (System.currentTimeMillis() - lastTranslated) / 1000;
+    public void apply(Entity entity, long l) {
         float xTranslation = 0;
         if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
             xTranslation -= horizontalSpeed;
@@ -29,8 +27,7 @@ public class ADMovementComponent implements Component<Entity> {
         if (Keyboard.isKeyDown(Keyboard.KEY_D)){
             xTranslation += horizontalSpeed;
         }
-        entity.xVel = xTranslation * m;
-        this.lastTranslated = System.currentTimeMillis();
+        entity.xVel = xTranslation/100;
     }
 
 }

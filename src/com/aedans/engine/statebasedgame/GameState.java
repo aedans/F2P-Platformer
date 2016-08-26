@@ -10,8 +10,10 @@ public abstract class GameState {
 
     /**
      * The Update function for the GameState.
+     *
+     * @param l: The time the update function was last called.
      */
-    public abstract void update();
+    public abstract void update(long l);
 
     /**
      * The Render function for the GameState.

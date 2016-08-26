@@ -109,8 +109,10 @@ public abstract class SpriteList<T extends Sprite> {
 
     /**
      * Function to update all Sprites.
+     *
+     * @param l: The time last updated.
      */
-    public void update() {
+    public void update(long l) {
         // Adds all Sprites in the toAdd queue.
         for (T t : toAdd) {
             sprites[t.getTexturedModel().getTextureID() - 1].add(t);
@@ -126,7 +128,7 @@ public abstract class SpriteList<T extends Sprite> {
         toRemove = new ArrayList<>();
 
         for (ArrayList<T> sprites : this.sprites){
-            sprites.forEach(Sprite::update);
+            sprites.forEach((t) -> t.update(l));
         }
 
         onUpdate();

@@ -1,14 +1,10 @@
 package com.aedans.platformer.gamestates.ingame.sprites;
 
-import com.aedans.engine.entities.Entity;
+import com.aedans.engine.Entity;
 import com.aedans.engine.entities.collision.CollisionDetails;
 import com.aedans.engine.sprites.SpriteList;
-import com.aedans.platformer.gamestates.ingame.sprites.entities.Player;
-import org.lwjgl.util.vector.Vector;
-import org.lwjgl.util.vector.Vector2f;
 
 import java.util.ArrayList;
-import java.util.function.Function;
 
 /**
  * Created by Aedan Smith on 8/24/2016.

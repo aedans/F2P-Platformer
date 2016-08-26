@@ -8,6 +8,7 @@ import com.aedans.engine.renderer.Viewport;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.SynchronousQueue;
 
 /**
  * Created by Aedan Smith on 8/23/2016.
@@ -42,10 +43,12 @@ public abstract class StateBasedGame implements Runnable {
      * Runs the StateBasedGame.
      */
     public void run(){
+        long lastUpdated = System.currentTimeMillis();
         while (!DisplayManager.isCloseRequested()){
             try {
                 DisplayManager.updateDisplay();
-                getActiveGameState().update();
+                getActiveGameState().update(System.currentTimeMillis() - lastUpdated);
+                lastUpdated = System.currentTimeMillis();
                 Viewport.update();
                 getActiveGameState().render();
             } catch (Exception e){

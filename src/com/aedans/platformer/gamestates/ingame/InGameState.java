@@ -1,16 +1,11 @@
 package com.aedans.platformer.gamestates.ingame;
 
-import com.aedans.engine.entities.Entity;
 import com.aedans.engine.renderer.Renderer;
-import com.aedans.engine.renderer.resources.TexturedModel;
 import com.aedans.engine.renderer.resources.Textures;
 import com.aedans.engine.statebasedgame.GameState;
 import com.aedans.platformer.gamestates.ingame.sprites.EntityBox;
 import com.aedans.platformer.gamestates.ingame.sprites.TestEntity;
 import com.aedans.platformer.gamestates.ingame.sprites.entities.Player;
-import com.sun.prism.Texture;
-
-import java.util.function.Function;
 
 /**
  * Created by Aedan Smith on 8/23/2016.
@@ -42,9 +37,9 @@ public class InGameState extends GameState {
     }
 
     @Override
-    public void update() {
-        entityBox.update();
-        player.update();
+    public void update(long l) {
+        entityBox.update(l);
+        player.update(l);
     }
 
     @Override

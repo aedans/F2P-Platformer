@@ -44,6 +44,7 @@ public class DisplayManager {
         Display.setFullscreen(fullscreen);
         Display.create(new PixelFormat(), attributes);
         Display.setTitle(title);
+        Display.setVSyncEnabled(true);
         GL11.glViewport(0, 0, xRes, yRes);
         System.out.println(GL11.glGetString(GL11.GL_VERSION));
     }

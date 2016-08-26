@@ -1,7 +1,7 @@
 package com.aedans.engine.entities.collision;
 
 import com.aedans.engine.entities.Component;
-import com.aedans.engine.entities.Entity;
+import com.aedans.engine.Entity;
 import com.aedans.platformer.gamestates.ingame.sprites.EntityBox;
 
 /**
@@ -19,7 +19,7 @@ public class CollisionComponent implements Component<Entity> {
     }
 
     @Override
-    public void apply(Entity entity) {
+    public void apply(Entity entity, long l) {
         CollisionDetails cd = entityBox.getCollision(entity);
         if (cd != null){
             entity.setPosition(cd.getCollisionX(), cd.getCollisionY());
