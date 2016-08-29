@@ -26,8 +26,8 @@ public class Player extends Entity {
         this.addComponent(new Component<Entity>() {
             @Override
             public void apply(Entity entity, long l) {
-                Viewport.xVel = ((Viewport.x) - (getX()+xVel))*5;
-                Viewport.yVel = ((Viewport.y) - (getY()+yVel))*5;
+                Viewport.xVel = ((Viewport.x) - (getX()))*8;
+                Viewport.yVel = ((Viewport.y) - (getY()))*8;
             }
         });
         this.addComponent(new ADMovementComponent(1.5f));
