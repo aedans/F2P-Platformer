@@ -19,7 +19,7 @@ public class DisplayManager {
     /**
      * The FPS to cap the Display at.
      */
-    private static int fpscap = Display.getDesktopDisplayMode().getFrequency() * 2;
+    private static int fpscap = Display.getDesktopDisplayMode().getFrequency();
 
     /**
      * Creates a display.

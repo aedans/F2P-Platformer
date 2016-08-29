@@ -10,6 +10,7 @@ import com.aedans.engine.renderer.Viewport;
 import com.aedans.engine.renderer.resources.TexturedModel;
 import com.aedans.engine.renderer.resources.Textures;
 import com.aedans.platformer.gamestates.ingame.sprites.EntityBox;
+import com.sun.glass.ui.View;
 import org.lwjgl.input.Keyboard;
 
 /**
@@ -22,6 +23,13 @@ public class Player extends Entity {
 
     public Player(EntityBox entityBox) {
         super(0, 0, TexturedModel.getTexturedModel(.06f, .06f, Textures.getTexture("player")));
+        this.addComponent(new Component<Entity>() {
+            @Override
+            public void apply(Entity entity, long l) {
+                Viewport.xVel = ((Viewport.x) - (getX()+xVel))*5;
+                Viewport.yVel = ((Viewport.y) - (getY()+yVel))*5;
+            }
+        });
         this.addComponent(new ADMovementComponent(1.5f));
         this.addComponent(new CollisionComponent(entityBox));
         this.addComponent(new GravityComponent(entityBox, .035f));
@@ -34,15 +42,6 @@ public class Player extends Entity {
                         entity.yVel += .02f;
                     }
                 }
-            }
-        });
-        this.addComponent(new Component<Entity>() {
-            @Override
-            public void apply(Entity entity, long l) {
-                Viewport.setPosition(
-                        entity.getX()+entity.xVel * ((float)l/10),
-                        entity.getY()+entity.yVel * ((float)l/10)
-                );
             }
         });
     }
