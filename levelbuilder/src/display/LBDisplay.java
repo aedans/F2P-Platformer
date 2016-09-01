@@ -12,17 +12,23 @@ import java.awt.*;
 
 public class LBDisplay extends JFrame {
 
-    public MouseListener mouseListener = new MouseListener();
+    private MouseListener mouseListener = new MouseListener();
+
+    private LBEntityList lbEntityList = new LBEntityList(mouseListener);
 
     public LBDisplay(int xRes, int yRes){
         this.setTitle("Level Builder");
         this.setUndecorated(true);
-        this.add(new LBEntityList(mouseListener));
+        this.add(lbEntityList);
         this.addMouseListener(mouseListener);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(xRes, yRes);
         this.setVisible(true);
         this.requestFocus();
+    }
+
+    public LBEntityList getLbEntityList() {
+        return lbEntityList;
     }
 
     public MouseListener getMouseListener() {

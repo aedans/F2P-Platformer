@@ -14,25 +14,20 @@ import java.util.function.Function;
 
 public class LBEntityList extends JPanel {
 
+    private ArrayList<Entity> toAdd = new ArrayList<>();
     private ArrayList<Entity> entities = new ArrayList<>();
 
     public LBEntityList(MouseListener mouseListener) {
-        mouseListener.addMousePressed(new Function<MouseEvent, Boolean>() {
-            @Override
-            public Boolean apply(MouseEvent mouseEvent) {
-                entities.add(new Entity(mouseEvent.getX(), mouseEvent.getY()));
-                return null;
-            }
-        });
-        mouseListener.addMouseReleased(new Function<MouseEvent, Boolean>() {
-            @Override
-            public Boolean apply(MouseEvent mouseEvent) {
-                Entity e = entities.get(entities.size() - 1);
-                e.setWidth(mouseEvent.getX()-e.getX());
-                e.setHeight(mouseEvent.getY()-e.getY());
-                return null;
-            }
-        });
+
+    }
+
+    public int addEntity(Entity e){
+        this.toAdd.add(e);
+        return toAdd.size() + entities.size() - 1;
+    }
+
+    public ArrayList<Entity> getEntities() {
+        return entities;
     }
 
     @Override
@@ -40,6 +35,9 @@ public class LBEntityList extends JPanel {
         for (Entity e : entities){
             e.draw(g);
         }
+
+        entities.addAll(toAdd);
+        toAdd = new ArrayList<>();
 
         repaint();
     }

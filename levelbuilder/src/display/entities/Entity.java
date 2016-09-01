@@ -16,6 +16,13 @@ public class Entity {
         this.y = y;
     }
 
+    public Entity(int x, int y, int width, int height){
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+
     public void draw(Graphics g){
         if (width != 0 && height != 0){
             g.setColor(new Color(0, 0, 0));
@@ -45,6 +52,11 @@ public class Entity {
 
     public int getY() {
         return y;
+    }
+
+    @Override
+    public String toString() {
+        return "Entity(" + x + ", " + y + ", " + width + ", " + height + ")";
     }
 
 }
