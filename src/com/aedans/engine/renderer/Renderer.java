@@ -50,8 +50,11 @@ public class Renderer {
      */
     public static void beginRender() {
         // Clears the Display.
-        GL11.glClearColor(0, 0, 0, 1);
+        GL11.glClearColor(.1f, .1f, .1f, 1);
+
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
+        GL11.glClear(GL11.GL_ACCUM_BUFFER_BIT);
+
         compositeShader.start();
         printf("Began rendering frame %d", frameNum);
     }
