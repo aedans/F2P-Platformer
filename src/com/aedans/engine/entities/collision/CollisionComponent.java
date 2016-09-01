@@ -1,7 +1,7 @@
 package com.aedans.engine.entities.collision;
 
 import com.aedans.engine.entities.Component;
-import com.aedans.engine.Entity;
+import com.aedans.engine.entities.Entity;
 import com.aedans.platformer.gamestates.ingame.sprites.EntityBox;
 
 /**

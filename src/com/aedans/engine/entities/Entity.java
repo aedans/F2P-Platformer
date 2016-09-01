@@ -1,6 +1,5 @@
-package com.aedans.engine;
+package com.aedans.engine.entities;
 
-import com.aedans.engine.entities.Component;
 import com.aedans.engine.sprites.Sprite;
 import com.aedans.engine.renderer.resources.TexturedModel;
 

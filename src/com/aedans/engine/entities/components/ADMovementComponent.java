@@ -1,7 +1,7 @@
 package com.aedans.engine.entities.components;
 
 import com.aedans.engine.entities.Component;
-import com.aedans.engine.Entity;
+import com.aedans.engine.entities.Entity;
 import org.lwjgl.input.Keyboard;
 
 /**
