@@ -37,24 +37,21 @@ public class InGameState extends GameState {
         }
         entityBox = new EntityBox(Textures.getNumTextures());
         try {
-            LevelLoader.addLoader(new Function<String, Entity>() {
-                @Override
-                public Entity apply(String s) {
-                    Matcher m = Pattern.compile("Entity\\((\\d+),(\\d+),(\\d+),(\\d+)\\)").matcher(s);
-                    if (m.find()) {
-                        return new TestEntity(
-                                Integer.parseInt(m.group(1)),
-                                Integer.parseInt(m.group(2)),
-                                Integer.parseInt(m.group(3)),
-                                Integer.parseInt(m.group(4)),
-                                "test1"
-                        );
-                    } else {
-                        return null;
-                    }
+            LevelLoader.addLoader(s -> {
+                Matcher m = Pattern.compile("\\(([\\d+-.]+),([\\d+-.]+),([\\d+-.]+),([\\d+-.]+)\\)").matcher(s);
+                if (m.find()) {
+                    return new TestEntity(
+                            Float.parseFloat(m.group(1)),
+                            Float.parseFloat(m.group(2)),
+                            Float.parseFloat(m.group(3)),
+                            Float.parseFloat(m.group(4)),
+                            "test1"
+                    );
+                } else {
+                    return null;
                 }
             });
-            entityBox.add(LevelLoader.load(new File("C:\\Users\\Aedan Smith\\OneDrive\\jg\\iCode\\F2P Platformer\\test.level")));
+            entityBox.add(LevelLoader.load(new File(".\\assets\\levels\\test.level")));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -49,6 +49,8 @@ public class TexturedModel {
      * @return TexturedModel: The created TexturedModel.
      */
     public static TexturedModel getTexturedModel(float width, float height, int textureID) {
+        width/=2;
+        height/=2;
         return getTexturedModel(
                 new float[]{
                         -width, -height,
