@@ -3,6 +3,7 @@ package com.aedans.engine.sprites;
 import com.aedans.engine.renderer.Renderer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
@@ -201,5 +202,10 @@ public abstract class SpriteList<T extends Sprite> {
      * Render hook
      */
     protected abstract void onRender();
+
+    @Override
+    public String toString() {
+        return Arrays.toString(sprites);
+    }
 
 }

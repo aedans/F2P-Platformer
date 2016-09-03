@@ -1,16 +1,14 @@
-package levelbuilderpackage.commands;
+package com.aedans.levelbuilder.commands;
 
 import com.aedan.jterminal.Directory;
 import com.aedan.jterminal.commands.Command;
 import com.aedan.jterminal.commands.CommandHandler;
-import com.aedan.jterminal.commands.commandarguments.ArgumentType;
 import com.aedan.jterminal.commands.commandarguments.CommandArgumentList;
 import com.aedan.jterminal.input.CommandInput;
 import com.aedan.jterminal.output.CommandOutput;
-import com.aedan.jterminal.utils.FileUtils;
-import display.entities.LBEntityList;
+import com.aedans.engine.sprites.Sprite;
 
-import java.io.File;
+import java.util.ArrayList;
 
 /**
  * Created by Aedan Smith on 9/3/2016.
@@ -18,17 +16,17 @@ import java.io.File;
 
 public class ExportLevel extends Command {
 
-    private LBEntityList lbEntityList;
+    private ArrayList<Sprite> spriteList;
 
-    public ExportLevel(LBEntityList lbEntityList) {
+    public ExportLevel(ArrayList<Sprite> spriteList) {
         super("export");
-        this.lbEntityList = lbEntityList;
+        this.spriteList = spriteList;
     }
 
     @Override
     public void parse(CommandInput input, CommandArgumentList args, Directory directory, CommandOutput output)
             throws CommandHandler.CommandHandlerException {
-        output.println(lbEntityList.toString());
+        spriteList.forEach(output::println);
     }
 
 }
