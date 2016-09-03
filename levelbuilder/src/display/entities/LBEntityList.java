@@ -20,43 +20,50 @@ public class LBEntityList extends JPanel {
 
     }
 
-    public int addEntity(Entity e){
-        this.toAdd.add(e);
-        return toAdd.size() + entities.size() - 1;
-    }
-
-    public void removeEntity(Entity e){
-        this.toRemove.add(e);
-    }
-
-    public ArrayList<Entity> getEntities() {
-        return entities;
-    }
-
-    @Override
-    public void paint(Graphics g){
-        for (Entity e : entities){
-            e.draw(g);
-        }
-
+    public void pushEntities(){
         entities.addAll(toAdd);
         toAdd = new ArrayList<>();
 
-        for (Entity e : toRemove){
+        for (Entity e : toRemove) {
             entities.remove(e);
         }
         toRemove = new ArrayList<>();
+    }
+
+
+    @Override
+    public void paint(Graphics g) {
+        pushEntities();
+
+        for (Entity e : entities) {
+            e.draw(g);
+        }
 
         repaint();
     }
 
     @Override
     public String toString() {
+        pushEntities();
         String s = "";
-        for (Entity e : entities){
+        ArrayList<Entity> es = (ArrayList<Entity>) entities.clone();
+        for (Entity e : es) {
             s += e.toString() + "\n";
         }
         return s;
+    }
+
+    public int addEntity(Entity e) {
+        this.toAdd.add(e);
+        return toAdd.size() - toRemove.size() + entities.size() - 1;
+    }
+
+    public void removeEntity(Entity e) {
+        this.toRemove.add(e);
+    }
+
+    public ArrayList<Entity> getEntities() {
+        return entities;
     }
 
 }

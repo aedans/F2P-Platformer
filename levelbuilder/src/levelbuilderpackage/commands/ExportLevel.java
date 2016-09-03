@@ -28,13 +28,7 @@ public class ExportLevel extends Command {
     @Override
     public void parse(CommandInput input, CommandArgumentList args, Directory directory, CommandOutput output)
             throws CommandHandler.CommandHandlerException {
-        args.checkMatches(ArgumentType.STRING);
-
-        try {
-            output.println(FileUtils.writeToFile(new File(args.get(1).value), lbEntityList.toString()));
-        } catch (FileUtils.FileIOException e) {
-            throw new CommandHandler.CommandHandlerException(e.getMessage());
-        }
+        output.println(lbEntityList.toString());
     }
 
 }
