@@ -50,4 +50,13 @@ public class LBEntityList extends JPanel {
         repaint();
     }
 
+    @Override
+    public String toString() {
+        String s = "";
+        for (Entity e : entities){
+            s += e.toString() + "\n";
+        }
+        return s;
+    }
+
 }

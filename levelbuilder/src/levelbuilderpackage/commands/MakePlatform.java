@@ -19,7 +19,8 @@ public class MakePlatform extends Command {
     private LBEntityList lbEntityList;
 
     public MakePlatform(LBEntityList lbEntityList) {
-        super("mkplatform", "Creates a platform with the given x, y, width, and height.");
+        super("mkplatform");
+        this.properties[0] = "Creates a platform with the given x, y, width, and height.";
         this.lbEntityList = lbEntityList;
     }
 
@@ -28,10 +29,10 @@ public class MakePlatform extends Command {
         args.checkMatches(ArgumentType.INTEGER, ArgumentType.INTEGER, ArgumentType.INTEGER, ArgumentType.INTEGER);
 
         Entity e = new Entity(
-                Integer.parseInt(args.getArg(1).value),
-                Integer.parseInt(args.getArg(2).value),
-                Integer.parseInt(args.getArg(3).value),
-                Integer.parseInt(args.getArg(4).value)
+                Integer.parseInt(args.get(1).value),
+                Integer.parseInt(args.get(2).value),
+                Integer.parseInt(args.get(3).value),
+                Integer.parseInt(args.get(4).value)
         );
 
         int id = lbEntityList.addEntity(e);

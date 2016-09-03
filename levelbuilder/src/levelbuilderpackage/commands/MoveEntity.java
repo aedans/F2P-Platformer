@@ -19,7 +19,8 @@ public class MoveEntity extends Command {
     private LBEntityList lbEntityList;
 
     public MoveEntity(LBEntityList lbEntityList) {
-        super("mventity", "Moves an entity.");
+        super("mventity");
+        this.properties[0] = "Moves an entity.";
         this.lbEntityList = lbEntityList;
     }
 
@@ -27,16 +28,16 @@ public class MoveEntity extends Command {
     public void parse(CommandInput input, CommandArgumentList args, Directory directory, CommandOutput output) throws CommandHandler.CommandHandlerException {
         args.checkMatches(ArgumentType.INTEGER, ArgumentType.INTEGER, ArgumentType.INTEGER);
 
-        Entity e = lbEntityList.getEntities().get(Integer.parseInt(args.getArg(1).value));
+        Entity e = lbEntityList.getEntities().get(Integer.parseInt(args.get(1).value));
 
         output.print("Moved entity \"" + e.toString() + "\"");
 
         e.setPosition(
-                Integer.parseInt(args.getArg(2).value),
-                Integer.parseInt(args.getArg(3).value)
+                Integer.parseInt(args.get(2).value),
+                Integer.parseInt(args.get(3).value)
         );
 
-        output.println(" to " + Integer.parseInt(args.getArg(2).value) + ", " + Integer.parseInt(args.getArg(3).value));
+        output.println(" to " + Integer.parseInt(args.get(2).value) + ", " + Integer.parseInt(args.get(3).value));
     }
 
 }

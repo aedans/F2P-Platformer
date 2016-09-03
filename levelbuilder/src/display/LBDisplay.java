@@ -4,7 +4,6 @@ import display.entities.LBEntityList;
 import display.listeners.MouseListener;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * Created by Aedan Smith on 8/31/2016.

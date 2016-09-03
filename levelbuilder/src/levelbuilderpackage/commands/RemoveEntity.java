@@ -19,7 +19,8 @@ public class RemoveEntity extends Command {
     private LBEntityList lbEntityList;
 
     public RemoveEntity(LBEntityList lbEntityList) {
-        super("rmentity", "Removes an entity.");
+        super("rmentity");
+        this.properties[0] = "Removes an entity.";
         this.lbEntityList = lbEntityList;
     }
 
@@ -27,11 +28,11 @@ public class RemoveEntity extends Command {
     public void parse(CommandInput input, CommandArgumentList args, Directory directory, CommandOutput output) throws CommandHandler.CommandHandlerException {
         args.checkMatches(ArgumentType.INTEGER);
 
-        Entity e = lbEntityList.getEntities().get(Integer.parseInt(args.getArg(1).value));
+        Entity e = lbEntityList.getEntities().get(Integer.parseInt(args.get(1).value));
 
         lbEntityList.removeEntity(e);
 
-        output.println("Removed entity \"" + e.toString() + ", ID: " + Integer.parseInt(args.getArg(1).value) + "\"");
+        output.println("Removed entity \"" + e.toString() + ", ID: " + Integer.parseInt(args.get(1).value) + "\"");
     }
 
 }
