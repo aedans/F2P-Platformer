@@ -1,4 +1,4 @@
-package com.aedans.levelbuilder.commands;
+package com.aedans.areabuilder.commands;
 
 import com.aedan.jterminal.Directory;
 import com.aedan.jterminal.commands.Command;
@@ -7,7 +7,7 @@ import com.aedan.jterminal.commands.commandarguments.ArgumentType;
 import com.aedan.jterminal.commands.commandarguments.CommandArgumentList;
 import com.aedan.jterminal.input.CommandInput;
 import com.aedan.jterminal.output.CommandOutput;
-import com.aedans.engine.levels.Level;
+import com.aedans.engine.areas.Area;
 import com.aedans.engine.renderer.resources.TexturedModel;
 import com.aedans.engine.renderer.resources.Textures;
 import com.aedans.engine.sprites.Sprite;
@@ -18,12 +18,12 @@ import com.aedans.engine.sprites.Sprite;
 
 public class MakePlatform extends Command {
 
-    private Level level;
+    private Area area;
 
-    public MakePlatform(Level level) {
+    public MakePlatform(Area area) {
         super("mkplatform");
         this.properties[0] = "Creates a platform with the given x, y, width, and height.";
-        this.level = level;
+        this.area = area;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class MakePlatform extends Command {
                 args.get(5).value
         );
 
-        level.addSprite(s);
+        area.addSprite(s);
 
         output.println("Added " + s.toString());
     }

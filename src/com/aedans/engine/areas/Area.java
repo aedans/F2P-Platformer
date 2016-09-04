@@ -1,4 +1,4 @@
-package com.aedans.engine.levels;
+package com.aedans.engine.areas;
 
 import com.aedans.engine.sprites.Sprite;
 
@@ -8,11 +8,11 @@ import java.util.ArrayList;
  * Created by Aedan Smith on 9/3/2016.
  */
 
-public class Level {
+public class Area {
 
     private ArrayList<Sprite> sprites = new ArrayList<>();
 
-    public Level(ArrayList<Sprite> sprites) {
+    public Area(ArrayList<Sprite> sprites) {
         this.sprites = sprites;
     }
 

@@ -1,4 +1,4 @@
-package com.aedans.levelbuilder.commands;
+package com.aedans.areabuilder.commands;
 
 import com.aedan.jterminal.Directory;
 import com.aedan.jterminal.commands.Command;
@@ -7,9 +7,8 @@ import com.aedan.jterminal.commands.commandarguments.ArgumentType;
 import com.aedan.jterminal.commands.commandarguments.CommandArgumentList;
 import com.aedan.jterminal.input.CommandInput;
 import com.aedan.jterminal.output.CommandOutput;
-import com.aedans.engine.entities.Entity;
-import com.aedans.engine.levels.Level;
-import com.aedans.engine.levels.LevelLoader;
+import com.aedans.engine.areas.Area;
+import com.aedans.engine.areas.AreaLoader;
 import com.aedans.engine.renderer.resources.TexturedModel;
 import com.aedans.engine.renderer.resources.Textures;
 import com.aedans.engine.sprites.Sprite;
@@ -22,15 +21,15 @@ import java.util.regex.Pattern;
  * Created by Aedan Smith on 9/3/2016.
  */
 
-public class LoadLevel extends Command {
+public class LoadArea extends Command {
 
-    private Level level;
+    private Area area;
 
-    public LoadLevel(Level level) {
-        super("load");
-        this.properties[0] = "Loads a level.";
-        this.level = level;
-        LevelLoader.addLoader(s -> {
+    public LoadArea(Area area) {
+        super("loadarea");
+        this.properties[0] = "Loads an area.";
+        this.area = area;
+        AreaLoader.addLoader(s -> {
             Matcher m = Pattern.compile("([\\d+-.]+),([\\d+-.]+),([\\d+-.]+),([\\d+-.]+),([\\w]+)").matcher(s);
             if (m.find()) {
                 return new Sprite(
@@ -59,12 +58,12 @@ public class LoadLevel extends Command {
         args.checkMatches(ArgumentType.STRING);
 
         try {
-            Level level = LevelLoader.load(directory.getFile(args.get(1).value));
-            for (Sprite s : level.getSprites()){
-                this.level.addSprite(s);
+            Area area = AreaLoader.load(directory.getFile(args.get(1).value + ".area"));
+            for (Sprite s : area.getSprites()){
+                this.area.addSprite(s);
             }
-            output.println("Loaded level.");
-            output.println(level);
+            output.println("Loaded area.");
+            output.println(area);
         } catch (IOException e) {
             throw new CommandHandler.CommandHandlerException(e.getMessage());
         }

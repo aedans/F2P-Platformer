@@ -1,10 +1,10 @@
-package com.aedans.levelbuilder;
+package com.aedans.areabuilder;
 
 import com.aedan.jterminal.JTerminal;
 import com.aedan.jterminal.commands.defaultpackage.DefaultPackage;
 import com.aedan.jterminal.input.CommandInput;
 import com.aedan.jterminal.output.CommandOutput;
-import com.aedans.engine.levels.Level;
+import com.aedans.engine.areas.Area;
 import com.aedans.engine.renderer.DisplayManager;
 import com.aedans.engine.renderer.Renderer;
 import com.aedans.engine.renderer.resources.Textures;
@@ -15,30 +15,30 @@ import java.util.Arrays;
 /**
  * Created by Aedan Smith on 8/31/2016.
  *
- * Main class for the Level Builder.
+ * Main class for the Area Builder.
  */
 
 public class Main {
 
-    private static Level level = new Level(new ArrayList<>());
+    private static Area level = new Area(new ArrayList<>());
 
     public static void main(String[] args) throws Exception {
-        DisplayManager.createDisplay(900, 900, false, "Level Editor");
+        DisplayManager.createDisplay(900, 900, false, "Area Editor");
         Textures.loadTexture("default.png");
         new JTerminal(
-                "-directory assets/levels",
+                "-directory assets/area",
                 new OpenGLCommandInput(level),
                 new CommandOutput(),
                 new DefaultPackage(),
-                new LevelBuilderPackage(level)
+                new AreaBuilderPackage(level)
         ).run();
     }
 
     private static class OpenGLCommandInput implements CommandInput {
 
-        private Level level;
+        private Area level;
 
-        public OpenGLCommandInput(Level level) {
+        public OpenGLCommandInput(Area level) {
             this.level = level;
         }
 

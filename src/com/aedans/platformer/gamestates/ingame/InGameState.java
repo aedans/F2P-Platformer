@@ -1,6 +1,6 @@
 package com.aedans.platformer.gamestates.ingame;
 
-import com.aedans.engine.levels.LevelLoader;
+import com.aedans.engine.areas.AreaLoader;
 import com.aedans.engine.renderer.Renderer;
 import com.aedans.engine.renderer.resources.Textures;
 import com.aedans.engine.statebasedgame.GameState;
@@ -33,7 +33,7 @@ public class InGameState extends GameState {
         }
         entityBox = new EntityBox(Textures.getNumTextures());
         try {
-            LevelLoader.addLoader(s -> {
+            AreaLoader.addLoader(s -> {
                 Matcher m = Pattern.compile("([\\d+-.]+),([\\d+-.]+),([\\d+-.]+),([\\d+-.]+),([\\w]+)").matcher(s);
                 if (m.find()) {
                     return new TestEntity(
@@ -47,7 +47,7 @@ public class InGameState extends GameState {
                     return null;
                 }
             });
-            entityBox.add(LevelLoader.load(new File(".\\assets\\levels\\test.level")).getSprites());
+            entityBox.add(AreaLoader.load(new File(".\\assets\\area\\test.area")).getSprites());
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,4 +1,4 @@
-package com.aedans.engine.levels;
+package com.aedans.engine.areas;
 
 import com.aedans.engine.sprites.Sprite;
 
@@ -9,14 +9,14 @@ import java.util.function.Function;
 /**
  * Created by Aedan Smith on 9/3/2016.
  *
- * Class for loading levels from .level files.
+ * Class for loading area from .level files.
  */
 
-public class LevelLoader {
+public class AreaLoader {
 
     private static ArrayList<Function<String, Sprite>> loaders = new ArrayList<>();
 
-    public static Level load(File file) throws IOException {
+    public static Area load(File file) throws IOException {
         ArrayList<Sprite> sprites = new ArrayList<>();
         BufferedReader buffer = new BufferedReader(new FileReader(file));
         String line;
@@ -29,7 +29,7 @@ public class LevelLoader {
             }
         }
         buffer.close();
-        return new Level(sprites);
+        return new Area(sprites);
     }
 
     public static void addLoader(Function<String, Sprite> loader){
