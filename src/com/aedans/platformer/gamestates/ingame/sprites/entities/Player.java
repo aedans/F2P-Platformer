@@ -24,7 +24,7 @@ public class Player extends Entity {
     private CollisionComponent collisionComponent;
     private float jumpSpeed = .02f;
     private boolean isOnFloor = false;
-    private int airDashesLeft = 0, numAirDashes = 2;
+    private int airDashesLeft = 0, numAirDashes = 1;
 
     public Player(SpriteBox entityBox) {
         super(0, 0, TexturedModel.getTexturedModel(.12f, .12f, Textures.getTexture("player")));
@@ -102,9 +102,9 @@ public class Player extends Entity {
                     MovementComponent.this.movementType = 0;
                 this.framesLeft--;
                 if (right)
-                    player.xVel = .02f;
+                    player.xVel = .03f;
                 if (left)
-                    player.xVel = -.02f;
+                    player.xVel = -.03f;
                 if (up)
                     player.yVel = .02f;
                 if (down)
@@ -116,7 +116,7 @@ public class Player extends Entity {
                 left = Keyboard.isKeyDown(Keyboard.KEY_A);
                 up = Keyboard.isKeyDown(Keyboard.KEY_W);
                 down = Keyboard.isKeyDown(Keyboard.KEY_S);
-                if (!up && !down)
+                if (!up && !down && !left && !right)
                     up = true;
                 framesLeft = length;
             }
