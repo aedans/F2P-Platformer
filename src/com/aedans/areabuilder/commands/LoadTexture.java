@@ -11,12 +11,19 @@ import com.aedans.engine.renderer.resources.Textures;
 
 /**
  * Created by Aedan Smith on 9/3/2016.
+ *
+ * Command to load a Texture into the Area Builder.
  */
 
 public class LoadTexture extends Command {
 
+    /**
+     * Default LoadTexture constructor.
+     */
     public LoadTexture() {
         super("loadtexture");
+        properties[0] = "Loads a Texture into OpenGL";
+        properties[1] = "loadtexture [string]: Loads texture [string] into OpenGL";
     }
 
     @Override
@@ -26,6 +33,7 @@ public class LoadTexture extends Command {
 
         try {
             Textures.loadTexture(args.get(1).value);
+            output.println("Loaded texture " + args.get(1));
         } catch (Exception e) {
             throw new CommandHandler.CommandHandlerException(e.getMessage());
         }

@@ -11,18 +11,32 @@ import com.aedans.engine.areas.Area;
 import com.aedans.engine.renderer.resources.TexturedModel;
 import com.aedans.engine.renderer.resources.Textures;
 import com.aedans.engine.sprites.Sprite;
+import com.aedans.platformer.gamestates.ingame.sprites.entities.Platform;
 
 /**
  * Created by Aedan Smith on 9/1/2016.
+ *
+ * Command to create a Platform in a given Area.
  */
 
 public class MakePlatform extends Command {
 
+    /**
+     * The Area currently stored in memory.
+     */
     private Area area;
 
+    /**
+     * Default MakePlatform constructor.
+     *
+     * @param area The Area currently stored in memory.
+     */
     public MakePlatform(Area area) {
         super("mkplatform");
-        this.properties[0] = "Creates a platform with the given x, y, width, and height.";
+        this.properties[0] = "Creates a platform with the given x, y, width, height, and Texture.";
+        this.properties[1] =
+                "mkplatform [float-x] [float-y] [float-width] [float-height] [string]: Creates a Platform with the\n" +
+                "position ([float-x], [float-y]), width [float-width], height [float-height], and texture [string].";
         this.area = area;
     }
 
@@ -34,38 +48,14 @@ public class MakePlatform extends Command {
         Sprite s = new Platform(
                 Float.parseFloat(args.get(1).value),
                 Float.parseFloat(args.get(2).value),
-                TexturedModel.getTexturedModel(
-                        Float.parseFloat(args.get(3).value),
-                        Float.parseFloat(args.get(4).value),
-                        Textures.getTexture(args.get(5).value)
-                ),
+                Float.parseFloat(args.get(3).value),
+                Float.parseFloat(args.get(4).value),
                 args.get(5).value
         );
 
         area.addSprite(s);
 
         output.println("Added " + s.toString());
-    }
-
-    private static class Platform extends Sprite {
-
-        private String texture;
-
-        public Platform(float x, float y, TexturedModel texturedModel, String texture) {
-            super(x, y, texturedModel);
-            this.texture = texture;
-        }
-
-        @Override
-        public void update(long l) {
-
-        }
-
-        @Override
-        public String toString() {
-            return super.toString() + "," + texture;
-        }
-
     }
 
 }

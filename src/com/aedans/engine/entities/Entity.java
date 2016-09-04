@@ -1,6 +1,7 @@
 package com.aedans.engine.entities;
 
 import com.aedans.engine.renderer.resources.TexturedModel;
+import com.aedans.engine.renderer.resources.Textures;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,10 @@ public abstract class Entity extends com.aedans.engine.sprites.Sprite {
 
     public Entity(float x, float y, TexturedModel texturedModel) {
         super(x, y, texturedModel);
+    }
+
+    public Entity(float x, float y, float width, float height, String texture){
+        super(x, y, TexturedModel.getTexturedModel(width, height, Textures.getTexture(texture)));
     }
 
     public void update(long l){

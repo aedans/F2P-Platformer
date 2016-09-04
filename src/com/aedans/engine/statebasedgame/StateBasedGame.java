@@ -59,6 +59,7 @@ public abstract class StateBasedGame implements Runnable {
             }
         }
         Loader.cleanUp();
+        Renderer.cleanUp();
     }
 
     protected int addGameState(GameState gameState){

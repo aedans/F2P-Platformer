@@ -14,8 +14,18 @@ import java.util.function.Function;
 
 public class AreaLoader {
 
+    /**
+     * List of Functions to assist the Area loading.
+     */
     private static ArrayList<Function<String, Sprite>> loaders = new ArrayList<>();
 
+    /**
+     * Loads an Area from a .area File.
+     *
+     * @param file The .area File to load from.
+     * @return The Area.
+     * @throws IOException if there is an error loading the Area.
+     */
     public static Area load(File file) throws IOException {
         ArrayList<Sprite> sprites = new ArrayList<>();
         BufferedReader buffer = new BufferedReader(new FileReader(file));

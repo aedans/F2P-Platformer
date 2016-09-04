@@ -7,13 +7,21 @@ import org.lwjgl.input.Keyboard;
 /**
  * Created by Aedan Smith on 8/25/2016.
  *
- * Class for adding WASD movement to an Entity.
+ * Class for adding AD movement to an Entity.
  */
 
 public class ADMovementComponent implements Component<Entity> {
 
+    /**
+     * The horizontal speed of movement.
+     */
     private float horizontalSpeed;
 
+    /**
+     * The default ADMovementComponent constructor.
+     *
+     * @param horizontalSpeed The horizontal speed of movement.
+     */
     public ADMovementComponent(float horizontalSpeed){
         this.horizontalSpeed = horizontalSpeed;
     }

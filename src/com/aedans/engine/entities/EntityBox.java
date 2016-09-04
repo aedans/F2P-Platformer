@@ -1,4 +1,4 @@
-package com.aedans.platformer.gamestates.ingame.sprites;
+package com.aedans.engine.entities;
 
 import com.aedans.engine.entities.Entity;
 import com.aedans.engine.entities.collision.CollisionDetails;

@@ -8,13 +8,22 @@ import org.lwjgl.LWJGLException;
 
 /**
  * Created by Aedan Smith on 9/1/2016.
+ *
+ * The Package for the Area Builder.
  */
 
-public class AreaBuilderPackage implements CommandPackage {
-
+class AreaBuilderPackage implements CommandPackage {
+    /**
+     * The Area currently stored in memory.
+     */
     private Area area;
 
-    public AreaBuilderPackage(Area area) throws LWJGLException {
+    /**
+     * Default AreaBuilderPackage constructor.
+     *
+     * @param area The Area currently stored in memory.
+     */
+    AreaBuilderPackage(Area area) throws LWJGLException {
         this.area = area;
     }
 

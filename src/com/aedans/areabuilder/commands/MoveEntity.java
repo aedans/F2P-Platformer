@@ -12,15 +12,26 @@ import com.aedans.engine.sprites.Sprite;
 
 /**
  * Created by Aedan Smith on 9/1/2016.
+ *
+ * Command to move an Entity given an id.
  */
 
 public class MoveEntity extends Command {
 
+    /**
+     * The Area currently stored in memory.
+     */
     private Area area;
 
+    /**
+     * Default MoveEntity constructor.
+     *
+     * @param area The Area currently stored in memory.
+     */
     public MoveEntity(Area area) {
         super("mventity");
         this.properties[0] = "Moves an entity.";
+        this.properties[1] = "mventity [int-id] [float-x] [float-y]: Translates Entity [id] over [float-x], [float-y]";
         this.area = area;
     }
 

@@ -6,14 +6,31 @@ import java.util.ArrayList;
 
 /**
  * Created by Aedan Smith on 9/3/2016.
+ *
+ * A List of Sprites for the Game to use.
  */
 
 public class Area {
 
+    /**
+     * The List of Sprites in the Area.
+     */
     private ArrayList<Sprite> sprites = new ArrayList<>();
 
+    /**
+     * The default Area constructor.
+     *
+     * @param sprites The List of Sprites in teh Area.
+     */
     public Area(ArrayList<Sprite> sprites) {
         this.sprites = sprites;
+    }
+
+    /**
+     * Renders the Area.
+     */
+    public void render() {
+        this.sprites.forEach(Sprite::render);
     }
 
     public void addSprite(Sprite sprite){
@@ -26,10 +43,6 @@ public class Area {
 
     public Sprite getSprite(int id){
         return sprites.get(id);
-    }
-
-    public void render() {
-        this.sprites.forEach(Sprite::render);
     }
 
     public ArrayList<Sprite> getSprites() {

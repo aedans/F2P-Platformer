@@ -71,4 +71,8 @@ public class DisplayManager {
         Display.destroy();
     }
 
+    public static int getFPScap() {
+        return fpscap;
+    }
+
 }

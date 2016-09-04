@@ -10,9 +10,23 @@ import com.aedans.engine.entities.Entity;
 
 public class CollisionDetails {
 
+    /**
+     * The Position of the Collision.
+     */
     private float collisionX, collisionY;
+
+    /**
+     * The Side of the Collision.
+     */
     private Side side;
 
+    /**
+     * Default CollisionDetails constructor for two colliding Entities.
+     *
+     * @param e1 The first colliding Entity.
+     * @param e2 The second colliding Entity.
+     * @param side The side of the second object that is Colliding.
+     */
     public CollisionDetails(Entity e1, Entity e2, Side side){
         this.side = side;
         switch (side) {
@@ -36,6 +50,15 @@ public class CollisionDetails {
         }
     }
 
+    /**
+     * Default CollisionDetails constructor for two colliding Entities.
+     *
+     * @param e1 The first colliding Entity.
+     * @param e2 The second colliding Entity.
+     * @param e3 The third colliding Entity.
+     * @param side1 The side of the second object that is Colliding.
+     * @param side2 The side of the third object that is Colliding.
+     */
     public CollisionDetails(Entity e1, Entity e2, Entity e3, Side side1, Side side2){
         this.side = Side.MULTI;
         switch (side1) {

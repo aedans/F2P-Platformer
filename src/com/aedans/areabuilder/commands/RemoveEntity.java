@@ -12,15 +12,26 @@ import com.aedans.engine.sprites.Sprite;
 
 /**
  * Created by Aedan Smith on 9/1/2016.
+ *
+ * Command to remove an Entity given an id.
  */
 
 public class RemoveEntity extends Command {
 
+    /**
+     * The Area currently stored in memory.
+     */
     private Area area;
 
+    /**
+     * Default RemoveEntity constructor.
+     *
+     * @param area The Area currently stored in memory.
+     */
     public RemoveEntity(Area area) {
         super("rmentity");
         this.properties[0] = "Removes an entity.";
+        this.properties[1] = "rmentity [int-id]: Removes Entity [int-id] from the Area.";
         this.area = area;
     }
 
