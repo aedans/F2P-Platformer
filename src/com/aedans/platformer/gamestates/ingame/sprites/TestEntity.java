@@ -7,7 +7,7 @@ import com.aedans.engine.renderer.resources.Textures;
 /**
  * Created by Aedan Smith on 8/23/2016.
  *
- * A test Sprite to test the Renderer.
+ * A test Entity to test the Renderer.
  */
 
 public class TestEntity extends Entity {

@@ -1,6 +1,5 @@
 package com.aedans.platformer.gamestates.ingame;
 
-import com.aedans.engine.entities.Entity;
 import com.aedans.engine.levels.LevelLoader;
 import com.aedans.engine.renderer.Renderer;
 import com.aedans.engine.renderer.resources.Textures;
@@ -11,7 +10,6 @@ import com.aedans.platformer.gamestates.ingame.sprites.entities.Player;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,6 +26,7 @@ public class InGameState extends GameState {
 
     public InGameState(){
         try {
+            Textures.loadTexture("default.png");
             Textures.loadTexture("player.png");
             Textures.loadTexture("test1.png");
             Textures.loadTexture("test3.png");
@@ -45,13 +44,13 @@ public class InGameState extends GameState {
                             Float.parseFloat(m.group(2)),
                             Float.parseFloat(m.group(3)),
                             Float.parseFloat(m.group(4)),
-                            "test1"
+                            "default"
                     );
                 } else {
                     return null;
                 }
             });
-            entityBox.add(LevelLoader.load(new File(".\\assets\\levels\\test.level")));
+            entityBox.add(LevelLoader.load(new File(".\\assets\\levels\\test.level")).getSprites());
         } catch (IOException e) {
             e.printStackTrace();
         }

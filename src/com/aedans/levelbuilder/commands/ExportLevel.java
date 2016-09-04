@@ -6,9 +6,7 @@ import com.aedan.jterminal.commands.CommandHandler;
 import com.aedan.jterminal.commands.commandarguments.CommandArgumentList;
 import com.aedan.jterminal.input.CommandInput;
 import com.aedan.jterminal.output.CommandOutput;
-import com.aedans.engine.sprites.Sprite;
-
-import java.util.ArrayList;
+import com.aedans.engine.levels.Level;
 
 /**
  * Created by Aedan Smith on 9/3/2016.
@@ -16,17 +14,17 @@ import java.util.ArrayList;
 
 public class ExportLevel extends Command {
 
-    private ArrayList<Sprite> spriteList;
+    private Level level;
 
-    public ExportLevel(ArrayList<Sprite> spriteList) {
+    public ExportLevel(Level level) {
         super("export");
-        this.spriteList = spriteList;
+        this.level = level;
     }
 
     @Override
     public void parse(CommandInput input, CommandArgumentList args, Directory directory, CommandOutput output)
             throws CommandHandler.CommandHandlerException {
-        spriteList.forEach(output::println);
+        output.println(level.toString());
     }
 
 }

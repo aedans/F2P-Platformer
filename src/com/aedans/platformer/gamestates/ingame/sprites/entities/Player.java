@@ -21,7 +21,8 @@ import org.lwjgl.input.Keyboard;
 public class Player extends Entity {
 
     public Player(EntityBox entityBox) {
-        super(0, 0, TexturedModel.getTexturedModel(.12f, .12f, Textures.getTexture("player")));
+        super(0, .5f, TexturedModel.getTexturedModel(.12f, .12f, Textures.getTexture("player")));
+        Viewport.setPosition(getX(), getY());
         this.addComponent(new Component<Entity>() {
             @Override
             public void apply(Entity entity, long l) {

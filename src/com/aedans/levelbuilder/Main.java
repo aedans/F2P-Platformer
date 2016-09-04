@@ -4,10 +4,10 @@ import com.aedan.jterminal.JTerminal;
 import com.aedan.jterminal.commands.defaultpackage.DefaultPackage;
 import com.aedan.jterminal.input.CommandInput;
 import com.aedan.jterminal.output.CommandOutput;
+import com.aedans.engine.levels.Level;
 import com.aedans.engine.renderer.DisplayManager;
 import com.aedans.engine.renderer.Renderer;
 import com.aedans.engine.renderer.resources.Textures;
-import com.aedans.engine.sprites.Sprite;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,25 +20,26 @@ import java.util.Arrays;
 
 public class Main {
 
+    private static Level level = new Level(new ArrayList<>());
+
     public static void main(String[] args) throws Exception {
-        ArrayList<Sprite> sprites = new ArrayList<>();
         DisplayManager.createDisplay(900, 900, false, "Level Editor");
         Textures.loadTexture("default.png");
         new JTerminal(
-                "",
-                new OpenGLCommandInput(sprites),
+                "-directory assets/levels",
+                new OpenGLCommandInput(level),
                 new CommandOutput(),
                 new DefaultPackage(),
-                new LevelBuilderPackage(sprites)
+                new LevelBuilderPackage(level)
         ).run();
     }
 
     private static class OpenGLCommandInput implements CommandInput {
 
-        private ArrayList<Sprite> sprites;
+        private Level level;
 
-        public OpenGLCommandInput(ArrayList<Sprite> sprites) {
-            this.sprites = sprites;
+        public OpenGLCommandInput(Level level) {
+            this.level = level;
         }
 
         public String nextLine() {
@@ -48,7 +49,7 @@ public class Main {
                         System.exit(0);
                     DisplayManager.updateDisplay();
                     Renderer.beginRender();
-                    sprites.forEach(Sprite::render);
+                    level.render();
                     Renderer.endRender();
                 }
                 byte[] bs = new byte[System.in.available()];

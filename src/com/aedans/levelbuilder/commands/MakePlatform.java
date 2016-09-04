@@ -7,11 +7,10 @@ import com.aedan.jterminal.commands.commandarguments.ArgumentType;
 import com.aedan.jterminal.commands.commandarguments.CommandArgumentList;
 import com.aedan.jterminal.input.CommandInput;
 import com.aedan.jterminal.output.CommandOutput;
+import com.aedans.engine.levels.Level;
 import com.aedans.engine.renderer.resources.TexturedModel;
 import com.aedans.engine.renderer.resources.Textures;
 import com.aedans.engine.sprites.Sprite;
-
-import java.util.ArrayList;
 
 /**
  * Created by Aedan Smith on 9/1/2016.
@@ -19,12 +18,12 @@ import java.util.ArrayList;
 
 public class MakePlatform extends Command {
 
-    private ArrayList<Sprite> spriteList;
+    private Level level;
 
-    public MakePlatform(ArrayList<Sprite> spriteList) {
+    public MakePlatform(Level level) {
         super("mkplatform");
         this.properties[0] = "Creates a platform with the given x, y, width, and height.";
-        this.spriteList = spriteList;
+        this.level = level;
     }
 
     @Override
@@ -46,7 +45,7 @@ public class MakePlatform extends Command {
             }
         };
 
-        spriteList.add(s);
+        level.addSprite(s);
 
         output.println("Added platform: " + s.toString());
     }

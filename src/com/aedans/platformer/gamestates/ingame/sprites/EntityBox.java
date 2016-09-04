@@ -2,6 +2,7 @@ package com.aedans.platformer.gamestates.ingame.sprites;
 
 import com.aedans.engine.entities.Entity;
 import com.aedans.engine.entities.collision.CollisionDetails;
+import com.aedans.engine.sprites.Sprite;
 import com.aedans.engine.sprites.SpriteList;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * Class containing all in-game sprites.
  */
 
-public class EntityBox extends SpriteList<Entity> {
+public class EntityBox extends SpriteList<Sprite> {
 
     /**
      * Default EntityBox constructor.
@@ -24,12 +25,12 @@ public class EntityBox extends SpriteList<Entity> {
     }
 
     @Override
-    protected void onAdd(Entity entity) {
+    protected void onAdd(Sprite sprite) {
 
     }
 
     @Override
-    protected void onRemove(Entity entity) {
+    protected void onRemove(Sprite sprite) {
 
     }
 
@@ -57,12 +58,14 @@ public class EntityBox extends SpriteList<Entity> {
                 e1right = e1.getX() + e1.getWidth() / 2 + e1.xVel;
         ArrayList<Entity> es = new ArrayList<>();
         iterate(e -> {
+            if (e.getClass() == Sprite.class)
+                return false;
             float e2hh = e.getHeight() / 2, e2hw = e.getWidth() / 2;
             if (e1bot < e.getY() + e2hh
                     && e1top > e.getY() - e2hh
                     && e1right > e.getX() - e2hw
                     && e1left < e.getX() + e2hw)
-                es.add(e);
+                es.add((Entity) e);
             return false;
         });
         if (es.size() == 0)

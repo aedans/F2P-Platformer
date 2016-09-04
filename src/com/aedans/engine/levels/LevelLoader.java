@@ -1,6 +1,6 @@
 package com.aedans.engine.levels;
 
-import com.aedans.engine.entities.Entity;
+import com.aedans.engine.sprites.Sprite;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -14,25 +14,25 @@ import java.util.function.Function;
 
 public class LevelLoader {
 
-    private static ArrayList<Function<String, Entity>> loaders = new ArrayList<>();
+    private static ArrayList<Function<String, Sprite>> loaders = new ArrayList<>();
 
-    public static ArrayList<Entity> load(File file) throws IOException {
-        ArrayList<Entity> entities = new ArrayList<>();
+    public static Level load(File file) throws IOException {
+        ArrayList<Sprite> sprites = new ArrayList<>();
         BufferedReader buffer = new BufferedReader(new FileReader(file));
         String line;
         while ((line = buffer.readLine()) != null) {
-            for (Function<String, Entity> l : loaders){
-                Entity loaded = l.apply(line);
+            for (Function<String, Sprite> l : loaders){
+                Sprite loaded = l.apply(line);
                 if (loaded != null){
-                    entities.add(loaded);
+                    sprites.add(loaded);
                 }
             }
         }
         buffer.close();
-        return entities;
+        return new Level(sprites);
     }
 
-    public static void addLoader(Function<String, Entity> loader){
+    public static void addLoader(Function<String, Sprite> loader){
         loaders.add(loader);
     }
 

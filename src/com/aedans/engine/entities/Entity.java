@@ -1,6 +1,5 @@
 package com.aedans.engine.entities;
 
-import com.aedans.engine.sprites.Sprite;
 import com.aedans.engine.renderer.resources.TexturedModel;
 
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
  * Abstract class for Entities that can be rendered by the Renderer.
  */
 
-public abstract class Entity extends Sprite {
+public abstract class Entity extends com.aedans.engine.sprites.Sprite {
 
     private ArrayList<Component<Entity>> components = new ArrayList<>();
     public float xVel = 0, yVel = 0;

@@ -2,14 +2,9 @@ package com.aedans.levelbuilder;
 
 import com.aedan.jterminal.CommandPackage;
 import com.aedan.jterminal.commands.CommandHandler;
-import com.aedans.engine.sprites.Sprite;
-import com.aedans.levelbuilder.commands.ExportLevel;
-import com.aedans.levelbuilder.commands.MakePlatform;
-import com.aedans.levelbuilder.commands.MoveEntity;
-import com.aedans.levelbuilder.commands.RemoveEntity;
+import com.aedans.engine.levels.Level;
+import com.aedans.levelbuilder.commands.*;
 import org.lwjgl.LWJGLException;
-
-import java.util.ArrayList;
 
 /**
  * Created by Aedan Smith on 9/1/2016.
@@ -17,18 +12,19 @@ import java.util.ArrayList;
 
 public class LevelBuilderPackage implements CommandPackage {
 
-    private ArrayList<Sprite> spriteList;
+    private Level level;
 
-    public LevelBuilderPackage(ArrayList<Sprite> sprites) throws LWJGLException {
-        this.spriteList = sprites;
+    public LevelBuilderPackage(Level level) throws LWJGLException {
+        this.level = level;
     }
 
     @Override
     public void addCommands(CommandHandler commandHandler) {
-        commandHandler.addCommand(new ExportLevel(spriteList));
-        commandHandler.addCommand(new MakePlatform(spriteList));
-        commandHandler.addCommand(new MoveEntity(spriteList));
-        commandHandler.addCommand(new RemoveEntity(spriteList));
+        commandHandler.addCommand(new ExportLevel(level));
+        commandHandler.addCommand(new LoadLevel(level));
+        commandHandler.addCommand(new MakePlatform(level));
+        commandHandler.addCommand(new MoveEntity(level));
+        commandHandler.addCommand(new RemoveEntity(level));
     }
 
 }

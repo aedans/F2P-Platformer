@@ -94,9 +94,9 @@ public abstract class SpriteList<T extends Sprite> {
     /**
      * Applies the function to all Sprites.
      *
-     * @param iterator: Function to be applied once for every Sprite. Takes the Sprite as an argument, returns
+     * @param iterator: Function to be applied once for every Entity. Takes the Entity as an argument, returns
      *                true if the iterator should stop iterating.
-     * @return The Sprite that the iterator stopped iterating on. Null if the iterator iterated through everything.
+     * @return The Entity that the iterator stopped iterating on. Null if the iterator iterated through everything.
      */
     public T iterate(Function<T, Boolean> iterator){
         for (ArrayList<T> ts : sprites){
@@ -182,14 +182,14 @@ public abstract class SpriteList<T extends Sprite> {
     /**
      * Add hook.
      *
-     * @param t: The added Sprite.
+     * @param t: The added Entity.
      */
     protected abstract void onAdd(T t);
 
     /**
      * Remove hook.
      *
-     * @param t: The removed Sprite.
+     * @param t: The removed Entity.
      */
     protected abstract void onRemove(T t);
 

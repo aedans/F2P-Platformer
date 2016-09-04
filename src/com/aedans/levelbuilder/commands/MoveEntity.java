@@ -7,6 +7,7 @@ import com.aedan.jterminal.commands.commandarguments.ArgumentType;
 import com.aedan.jterminal.commands.commandarguments.CommandArgumentList;
 import com.aedan.jterminal.input.CommandInput;
 import com.aedan.jterminal.output.CommandOutput;
+import com.aedans.engine.levels.Level;
 import com.aedans.engine.sprites.Sprite;
 import com.aedans.engine.sprites.SpriteList;
 
@@ -18,28 +19,28 @@ import java.util.ArrayList;
 
 public class MoveEntity extends Command {
 
-    private ArrayList<Sprite> spriteList;
+    private Level level;
 
-    public MoveEntity(ArrayList<Sprite> spriteList) {
+    public MoveEntity(Level level) {
         super("mventity");
         this.properties[0] = "Moves an entity.";
-        this.spriteList = spriteList;
+        this.level = level;
     }
 
     @Override
     public void parse(CommandInput input, CommandArgumentList args, Directory directory, CommandOutput output) throws CommandHandler.CommandHandlerException {
-        args.checkMatches(ArgumentType.INTEGER, ArgumentType.INTEGER, ArgumentType.INTEGER);
+        args.checkMatches(ArgumentType.INTEGER, ArgumentType.FLOAT, ArgumentType.FLOAT);
 
-        Sprite s = spriteList.get(Integer.parseInt(args.get(1).value));
+        Sprite s = level.getSprite(Integer.parseInt(args.get(1).value));
 
         output.print("Moved entity \"" + s.toString() + "\"");
 
-        s.setPosition(
-                Integer.parseInt(args.get(2).value),
-                Integer.parseInt(args.get(3).value)
+        s.translate(
+                Float.parseFloat(args.get(2).value),
+                Float.parseFloat(args.get(3).value)
         );
 
-        output.println(" to " + Integer.parseInt(args.get(2).value) + ", " + Integer.parseInt(args.get(3).value));
+        output.println(" to " + s.getX() + ", " + s.getY());
     }
 
 }
