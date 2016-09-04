@@ -30,25 +30,6 @@ public class Player extends Entity {
         super(0, 0, TexturedModel.getTexturedModel(.12f, .12f, Textures.getTexture("player")));
         Viewport.setPosition(getX(), getY());
         this.addComponent(new Component<Entity>() {
-            @Override
-            public void apply(Entity entity, long l) {
-                Viewport.xVel = ((Viewport.x) - (getX()))*8;
-                Viewport.yVel = ((Viewport.y) - (getY()))*8;
-                if (entity.getY() < -2)
-                    reset();
-                if (collisionComponent.getCollisionDetails() != null
-                        && collisionComponent.getCollisionDetails().getSide() == CollisionDetails.Side.TOP){
-                    isOnFloor = true;
-                    airJumpsLeft = numAirJumps;
-                } else {
-                    isOnFloor = false;
-                }
-            }
-        });
-        this.addComponent(new ADMovementComponent(1.5f));
-        this.addComponent(new GravityComponent(entityBox, .035f));
-        this.addComponent(collisionComponent = new CollisionComponent(entityBox));
-        this.addComponent(new Component<Entity>() {
             private int jumpTimer = 0;
 
             @Override
@@ -66,6 +47,25 @@ public class Player extends Entity {
                 jumpTimer--;
             }
         });
+        this.addComponent(new Component<Entity>() {
+            @Override
+            public void apply(Entity entity, long l) {
+                Viewport.xVel = ((Viewport.x) - (getX()))*8;
+                Viewport.yVel = ((Viewport.y) - (getY()))*8;
+                if (entity.getY() < -2)
+                    reset();
+                if (collisionComponent.getCollisionDetails() != null
+                        && collisionComponent.getCollisionDetails().getSide() == CollisionDetails.Side.TOP){
+                    isOnFloor = true;
+                    airJumpsLeft = numAirJumps;
+                } else {
+                    isOnFloor = false;
+                }
+            }
+        });
+        this.addComponent(new ADMovementComponent(0.035f));
+        this.addComponent(new GravityComponent(entityBox, .035f));
+        this.addComponent(collisionComponent = new CollisionComponent(entityBox));
     }
 
     private void reset() {

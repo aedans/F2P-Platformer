@@ -28,14 +28,15 @@ public class ADMovementComponent implements Component<Entity> {
 
     @Override
     public void apply(Entity entity, long l) {
-        float xTranslation = 0;
-        if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
-            xTranslation -= horizontalSpeed;
+        if (Keyboard.isKeyDown(Keyboard.KEY_A)){
+            entity.xVel -= Math.abs(entity.xVel+horizontalSpeed)/5;
         }
+
         if (Keyboard.isKeyDown(Keyboard.KEY_D)){
-            xTranslation += horizontalSpeed;
+            entity.xVel += Math.abs(entity.xVel-horizontalSpeed)/5;
         }
-        entity.xVel = xTranslation/100;
+
+        entity.xVel *= .8;
     }
 
 }
