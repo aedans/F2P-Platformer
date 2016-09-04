@@ -1,12 +1,12 @@
 package com.aedans.platformer.gamestates.ingame;
 
 import com.aedans.engine.areas.AreaLoader;
+import com.aedans.engine.sprites.SpriteBox;
 import com.aedans.engine.renderer.Renderer;
 import com.aedans.engine.renderer.resources.TexturedModel;
 import com.aedans.engine.renderer.resources.Textures;
 import com.aedans.engine.sprites.Sprite;
 import com.aedans.engine.statebasedgame.GameState;
-import com.aedans.engine.entities.EntityBox;
 import com.aedans.platformer.gamestates.ingame.sprites.entities.Platform;
 import com.aedans.platformer.gamestates.ingame.sprites.entities.Player;
 
@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 
 public class InGameState extends GameState {
 
-    private EntityBox entityBox;
+    private SpriteBox entityBox;
     private Player player;
 
     public InGameState(){
@@ -33,7 +33,7 @@ public class InGameState extends GameState {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        entityBox = new EntityBox(Textures.getNumTextures());
+        entityBox = new SpriteBox(Textures.getNumTextures());
         try {
             AreaLoader.addLoader(s -> {
                 Matcher m = Pattern.compile("(\\w+)::([\\d+-.]+),([\\d+-.]+),([\\d+-.]+),([\\d+-.]+),([\\w]+)").matcher(s);

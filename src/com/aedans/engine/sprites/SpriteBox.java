@@ -1,4 +1,4 @@
-package com.aedans.engine.entities;
+package com.aedans.engine.sprites;
 
 import com.aedans.engine.entities.Entity;
 import com.aedans.engine.entities.collision.CollisionDetails;
@@ -13,14 +13,14 @@ import java.util.ArrayList;
  * Class containing all in-game sprites.
  */
 
-public class EntityBox extends SpriteList<Sprite> {
+public class SpriteBox extends SpriteList<Sprite> {
 
     /**
-     * Default EntityBox constructor.
+     * Default SpriteBox constructor.
      *
-     * @param numTextures : The number of textures the EntityBox should support.
+     * @param numTextures : The number of textures the SpriteBox should support.
      */
-    public EntityBox(int numTextures) {
+    public SpriteBox(int numTextures) {
         super(numTextures);
     }
 
@@ -74,14 +74,14 @@ public class EntityBox extends SpriteList<Sprite> {
             Entity e2 = es.get(0);
             float xDist = e1.getX() - e2.getX(),
                     yDist = (e1.getY() - e2.getY()) * (e2.getWidth() / e2.getHeight());
-            if (xDist > yDist) {
+            if (xDist >= yDist) {
                 if (xDist > -yDist) {
                     return new CollisionDetails(e1, e2, CollisionDetails.Side.RIGHT);
                 } else {
                     return new CollisionDetails(e1, e2, CollisionDetails.Side.BOTTOM);
                 }
             } else {
-                if (xDist > -yDist) {
+                if (xDist >= -yDist) {
                     return new CollisionDetails(e1, e2, CollisionDetails.Side.TOP);
                 } else {
                     return new CollisionDetails(e1, e2, CollisionDetails.Side.LEFT);

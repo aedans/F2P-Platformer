@@ -2,6 +2,7 @@ package com.aedans.platformer.gamestates.ingame.sprites.entities;
 
 import com.aedans.engine.entities.Component;
 import com.aedans.engine.entities.Entity;
+import com.aedans.engine.sprites.SpriteBox;
 import com.aedans.engine.entities.collision.CollisionComponent;
 import com.aedans.engine.entities.collision.CollisionDetails;
 import com.aedans.engine.entities.components.ADMovementComponent;
@@ -10,7 +11,6 @@ import com.aedans.engine.renderer.DisplayManager;
 import com.aedans.engine.renderer.Viewport;
 import com.aedans.engine.renderer.resources.TexturedModel;
 import com.aedans.engine.renderer.resources.Textures;
-import com.aedans.engine.entities.EntityBox;
 import org.lwjgl.input.Keyboard;
 
 /**
@@ -26,7 +26,7 @@ public class Player extends Entity {
     private boolean isOnFloor = false;
     private int airJumpsLeft = 0, numAirJumps = 1;
 
-    public Player(EntityBox entityBox) {
+    public Player(SpriteBox entityBox) {
         super(0, 0, TexturedModel.getTexturedModel(.12f, .12f, Textures.getTexture("player")));
         Viewport.setPosition(getX(), getY());
         this.addComponent(new Component<Entity>() {

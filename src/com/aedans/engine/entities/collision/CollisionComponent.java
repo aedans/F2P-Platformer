@@ -2,7 +2,7 @@ package com.aedans.engine.entities.collision;
 
 import com.aedans.engine.entities.Component;
 import com.aedans.engine.entities.Entity;
-import com.aedans.engine.entities.EntityBox;
+import com.aedans.engine.sprites.SpriteBox;
 
 /**
  * Created by Aedan Smith on 8/25/2016.
@@ -13,9 +13,9 @@ import com.aedans.engine.entities.EntityBox;
 public class CollisionComponent implements Component<Entity> {
 
     /**
-     * The EntityBox containing the Entity.
+     * The SpriteBox containing the Entity.
      */
-    private EntityBox entityBox;
+    private SpriteBox entityBox;
 
     /**
      * The CollisionDetails for the most recent Collision.
@@ -25,9 +25,9 @@ public class CollisionComponent implements Component<Entity> {
     /**
      * Default CollisionComponent constructor.
      *
-     * @param entityBox The EntityBox containing the Entity.
+     * @param entityBox The SpriteBox containing the Entity.
      */
-    public CollisionComponent(EntityBox entityBox) {
+    public CollisionComponent(SpriteBox entityBox) {
         this.entityBox = entityBox;
     }
 
@@ -36,15 +36,22 @@ public class CollisionComponent implements Component<Entity> {
         calculateCollisions(entity);
         if (cd != null) {
             entity.setPosition(cd.getCollisionX(), cd.getCollisionY());
-            if (cd.getSide() == CollisionDetails.Side.TOP || cd.getSide() == CollisionDetails.Side.BOTTOM) {
-                entity.yVel = 0;
-            }
-            if (cd.getSide() == CollisionDetails.Side.LEFT || cd.getSide() == CollisionDetails.Side.RIGHT) {
-                entity.xVel = 0;
-            }
-            if (cd.getSide() == CollisionDetails.Side.MULTI) {
-                entity.xVel = 0;
-                entity.yVel = 0;
+            switch (cd.getSide()){
+                case TOP:
+                    if (entity.yVel < 0) entity.yVel = 0;
+                    break;
+                case BOTTOM:
+                    if (entity.yVel > 0) entity.yVel = 0;
+                    break;
+                case LEFT:
+                    if (entity.xVel > 0) entity.xVel = 0;
+                    break;
+                case RIGHT:
+                    if (entity.xVel < 0) entity.xVel = 0;
+                    break;
+                default:
+                    entity.xVel = 0;
+                    entity.yVel = 0;
             }
         }
     }
