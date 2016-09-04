@@ -13,7 +13,6 @@ import com.aedans.engine.levels.LevelLoader;
 import com.aedans.engine.renderer.resources.TexturedModel;
 import com.aedans.engine.renderer.resources.Textures;
 import com.aedans.engine.sprites.Sprite;
-import com.aedans.platformer.gamestates.ingame.sprites.TestEntity;
 
 import java.io.IOException;
 import java.util.regex.Matcher;
@@ -32,7 +31,7 @@ public class LoadLevel extends Command {
         this.properties[0] = "Loads a level.";
         this.level = level;
         LevelLoader.addLoader(s -> {
-            Matcher m = Pattern.compile("\\(([\\d+-.]+),([\\d+-.]+),([\\d+-.]+),([\\d+-.]+)\\)").matcher(s);
+            Matcher m = Pattern.compile("([\\d+-.]+),([\\d+-.]+),([\\d+-.]+),([\\d+-.]+),([\\w]+)").matcher(s);
             if (m.find()) {
                 return new Sprite(
                         Float.parseFloat(m.group(1)),
@@ -40,7 +39,7 @@ public class LoadLevel extends Command {
                         TexturedModel.getTexturedModel(
                                 Float.parseFloat(m.group(3)),
                                 Float.parseFloat(m.group(4)),
-                                Textures.getTexture("default")
+                                Textures.getTexture(m.group(5))
                         )
                 ){
                     @Override

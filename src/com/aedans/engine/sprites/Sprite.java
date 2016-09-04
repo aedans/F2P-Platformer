@@ -68,7 +68,7 @@ public abstract class Sprite implements Renderable {
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + "(" + x + "," + y + "," + getWidth() + "," + getHeight() + ")";
+        return this.getClass().getSimpleName() + "::" + x + "," + y + "," + getWidth() + "," + getHeight();
     }
 
 }

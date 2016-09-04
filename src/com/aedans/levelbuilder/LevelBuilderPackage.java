@@ -22,6 +22,7 @@ public class LevelBuilderPackage implements CommandPackage {
     public void addCommands(CommandHandler commandHandler) {
         commandHandler.addCommand(new ExportLevel(level));
         commandHandler.addCommand(new LoadLevel(level));
+        commandHandler.addCommand(new LoadTexture());
         commandHandler.addCommand(new MakePlatform(level));
         commandHandler.addCommand(new MoveEntity(level));
         commandHandler.addCommand(new RemoveEntity(level));

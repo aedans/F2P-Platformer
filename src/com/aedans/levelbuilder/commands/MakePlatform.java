@@ -29,25 +29,43 @@ public class MakePlatform extends Command {
     @Override
     public void parse(CommandInput input, CommandArgumentList args, Directory directory, CommandOutput output)
             throws CommandHandler.CommandHandlerException {
-        args.checkMatches(ArgumentType.FLOAT, ArgumentType.FLOAT, ArgumentType.FLOAT, ArgumentType.FLOAT);
+        args.checkMatches(ArgumentType.FLOAT, ArgumentType.FLOAT, ArgumentType.FLOAT, ArgumentType.FLOAT, ArgumentType.STRING);
 
-        Sprite s = new Sprite(
+        Sprite s = new Platform(
                 Float.parseFloat(args.get(1).value),
                 Float.parseFloat(args.get(2).value),
                 TexturedModel.getTexturedModel(
                         Float.parseFloat(args.get(3).value),
                         Float.parseFloat(args.get(4).value),
-                        Textures.getTexture("default")
-                )) {
-            @Override
-            public void update(long l) {
-
-            }
-        };
+                        Textures.getTexture(args.get(5).value)
+                ),
+                args.get(5).value
+        );
 
         level.addSprite(s);
 
-        output.println("Added platform: " + s.toString());
+        output.println("Added " + s.toString());
+    }
+
+    private static class Platform extends Sprite {
+
+        private String texture;
+
+        public Platform(float x, float y, TexturedModel texturedModel, String texture) {
+            super(x, y, texturedModel);
+            this.texture = texture;
+        }
+
+        @Override
+        public void update(long l) {
+
+        }
+
+        @Override
+        public String toString() {
+            return super.toString() + "," + texture;
+        }
+
     }
 
 }

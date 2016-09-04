@@ -26,25 +26,22 @@ public class InGameState extends GameState {
 
     public InGameState(){
         try {
-            Textures.loadTexture("default.png");
             Textures.loadTexture("player.png");
             Textures.loadTexture("test1.png");
-            Textures.loadTexture("test3.png");
-            Textures.loadTexture("grassFloor.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
         entityBox = new EntityBox(Textures.getNumTextures());
         try {
             LevelLoader.addLoader(s -> {
-                Matcher m = Pattern.compile("\\(([\\d+-.]+),([\\d+-.]+),([\\d+-.]+),([\\d+-.]+)\\)").matcher(s);
+                Matcher m = Pattern.compile("([\\d+-.]+),([\\d+-.]+),([\\d+-.]+),([\\d+-.]+),([\\w]+)").matcher(s);
                 if (m.find()) {
                     return new TestEntity(
                             Float.parseFloat(m.group(1)),
                             Float.parseFloat(m.group(2)),
                             Float.parseFloat(m.group(3)),
                             Float.parseFloat(m.group(4)),
-                            "default"
+                            m.group(5)
                     );
                 } else {
                     return null;
@@ -54,7 +51,6 @@ public class InGameState extends GameState {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(entityBox);
         player = new Player(entityBox);
     }
 

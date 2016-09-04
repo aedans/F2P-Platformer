@@ -29,7 +29,7 @@ public class Level {
     }
 
     public void render() {
-        sprites.forEach(Sprite::render);
+        this.sprites.forEach(Sprite::render);
     }
 
     public ArrayList<Sprite> getSprites() {
