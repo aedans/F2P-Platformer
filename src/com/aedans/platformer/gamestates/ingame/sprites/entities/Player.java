@@ -56,14 +56,14 @@ public class Player extends Entity {
                 if (Keyboard.isKeyDown(Keyboard.KEY_SPACE) && jumpTimer <= 0) {
                     if (isOnFloor){
                         entity.yVel = jumpSpeed;
+                        jumpTimer = DisplayManager.getFPScap()/4;
                     } else if (airJumpsLeft != 0){
                         entity.yVel = jumpSpeed;
                         airJumpsLeft--;
+                        jumpTimer = DisplayManager.getFPScap()/4;
                     }
-                    jumpTimer = DisplayManager.getFPScap()/5;
-                } else {
-                    jumpTimer--;
                 }
+                jumpTimer--;
             }
         });
     }
