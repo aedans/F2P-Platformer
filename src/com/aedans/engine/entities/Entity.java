@@ -31,8 +31,9 @@ public abstract class Entity extends com.aedans.engine.sprites.Sprite {
         translate(xVel * ((float)l/10), yVel * ((float)l/10));
     }
 
-    public void addComponent(Component<Entity> component){
-        components.add(component);
+    public void addComponent(Component<? extends Entity> component){
+        //noinspection unchecked
+        components.add((Component<Entity>) component);
     }
 
 }

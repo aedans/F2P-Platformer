@@ -6,7 +6,7 @@ package com.aedans.engine.entities;
  * Interface for creating component-based objects.
  */
 
-public interface Component<T> {
+public interface Component<T extends Entity> {
 
     void apply(T t, long l);
 
