@@ -1,0 +1,1 @@
+java -Djava.library.path=.\resources\lwjgl-2.9.3\native\windows -jar .\jars\AreaBuilder\AreaBuilder.jar 1280 720

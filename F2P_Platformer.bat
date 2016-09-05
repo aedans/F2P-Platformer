@@ -1,0 +1,1 @@
+java -Djava.library.path=.\resources\lwjgl-2.9.3\native\windows -jar ".\jars\F2P_Platformer\F2P Platformer.jar" 1280 720

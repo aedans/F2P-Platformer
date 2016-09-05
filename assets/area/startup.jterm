@@ -1,2 +1,3 @@
 for 1 5 i "loadtexture test[i].png"
 loadtexture grassFloor.png
+loadarea 0

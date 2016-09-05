@@ -8,7 +8,10 @@ import com.aedans.engine.areas.Area;
 import com.aedans.engine.renderer.DisplayManager;
 import com.aedans.engine.renderer.Loader;
 import com.aedans.engine.renderer.Renderer;
+import com.aedans.engine.renderer.Viewport;
 import com.aedans.engine.renderer.resources.Textures;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,7 +37,7 @@ public class Main {
      * @throws Exception if there is an error initializing the LevelBuilder.
      */
     public static void main(String[] args) throws Exception {
-        DisplayManager.createDisplay(900, 900, false, "Area Editor");
+        DisplayManager.createDisplay(Integer.parseInt(args[0]), Integer.parseInt(args[1]), false, "AreaBuilder");
         Textures.loadTexture("default.png");
         new JTerminal(
                 "-directory assets/area -startup assets/area/startup.jterm",
@@ -69,8 +72,23 @@ public class Main {
         public String nextLine() {
             try {
                 while (System.in.available() == 0) {
+                    if (Keyboard.isKeyDown(Keyboard.KEY_D))
+                        Viewport.xVel = -1f;
+                    else if (Keyboard.isKeyDown(Keyboard.KEY_A))
+                        Viewport.xVel = 1f;
+                    else Viewport.xVel = 0;
+
+                    if (Keyboard.isKeyDown(Keyboard.KEY_W))
+                        Viewport.yVel = -1f;
+                    else if (Keyboard.isKeyDown(Keyboard.KEY_S))
+                        Viewport.yVel = 1f;
+                    else Viewport.yVel = 0;
+
+                    Viewport.update();
+
                     if (DisplayManager.isCloseRequested())
                         System.exit(0);
+
                     DisplayManager.updateDisplay();
                     Renderer.beginRender();
                     level.render();
