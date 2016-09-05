@@ -3,6 +3,7 @@ package com.aedans.areabuilder;
 import com.aedan.jterminal.JTerminal;
 import com.aedan.jterminal.commands.defaultpackage.DefaultPackage;
 import com.aedan.jterminal.input.CommandInput;
+import com.aedan.jterminal.input.SystemInput;
 import com.aedan.jterminal.output.CommandOutput;
 import com.aedans.engine.areas.Area;
 import com.aedans.engine.renderer.DisplayManager;
@@ -16,6 +17,7 @@ import org.lwjgl.input.Mouse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * Created by Aedan Smith on 8/31/2016.
@@ -41,7 +43,8 @@ public class Main {
         Textures.loadTexture("default.png");
         new JTerminal(
                 "-directory assets/area -startup assets/area/startup.jterm",
-                new OpenGLCommandInput(level),
+                new OpenGLCommandInput(),
+//                new SystemInput(),
                 new CommandOutput(),
                 new DefaultPackage(),
                 new AreaBuilderPackage(level)
@@ -55,19 +58,7 @@ public class Main {
      */
     private static class OpenGLCommandInput implements CommandInput {
 
-        /**
-         * The Area currently stored in memory.
-         */
-        private Area area;
-
-        /**
-         * Default ExportArea constructor.
-         *
-         * @param area The Area currently stored in memory.
-         */
-        OpenGLCommandInput(Area area) {
-            this.area = area;
-        }
+        private Scanner scanner = new Scanner(System.in);
 
         public String nextLine() {
             try {
@@ -94,10 +85,7 @@ public class Main {
                     level.render();
                     Renderer.endRender();
                 }
-                byte[] bs = new byte[System.in.available()];
-                System.in.read(bs);
-                bs = Arrays.copyOf(bs, bs.length - 1);
-                return new String(bs);
+                return scanner.nextLine();
             } catch (IOException e) {
                 e.printStackTrace();
                 return "broken";

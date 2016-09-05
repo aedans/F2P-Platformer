@@ -39,7 +39,7 @@ public class LoadArea extends Command {
     public LoadArea(Area area) {
         super("loadarea");
         this.properties[0] = "Loads an area.";
-        this.properties[1] = "loadarea [string]: Loads file [string].area into memory";
+        this.properties[1] = "loadarea [string]: Loads file [string].area into memory.";
         this.area = area;
         AreaLoader.addLoader(s -> {
             Matcher m = Pattern.compile("(\\w+)::([\\d+-.]+),([\\d+-.]+),([\\d+-.]+),([\\d+-.]+),([\\w]+)").matcher(s);
@@ -85,7 +85,7 @@ public class LoadArea extends Command {
             for (Sprite s : area.getSprites()){
                 this.area.addSprite(s);
             }
-            output.println("Loaded area.");
+            output.println("Loaded Area");
             output.println(area);
         } catch (IOException e) {
             throw new CommandHandler.CommandHandlerException(e.getMessage());
