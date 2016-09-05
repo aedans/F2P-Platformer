@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="JTerminal">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/resources/JTerminal.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
