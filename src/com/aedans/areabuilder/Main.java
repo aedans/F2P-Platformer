@@ -9,7 +9,6 @@ import com.aedans.engine.renderer.DisplayManager;
 import com.aedans.engine.renderer.Loader;
 import com.aedans.engine.renderer.Renderer;
 import com.aedans.engine.renderer.resources.Textures;
-import org.lwjgl.LWJGLException;
 
 import java.io.IOException;
 import java.util.ArrayList;

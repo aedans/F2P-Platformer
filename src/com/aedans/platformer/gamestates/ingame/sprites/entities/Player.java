@@ -78,12 +78,12 @@ public class Player extends Entity {
                 if (Keyboard.isKeyDown(Keyboard.KEY_SPACE) && jumpTimer <= 0) {
                     if (isOnFloor){
                         player.yVel = jumpSpeed;
-                        jumpTimer = DisplayManager.getFPScap()/4;
+                        jumpTimer = DisplayManager.getFPScap()/3;
                     } else if (airDashesLeft != 0){
                         movementType = 1;
                         dashMovementComponent.begin(20);
                         airDashesLeft--;
-                        jumpTimer = DisplayManager.getFPScap()/4;
+                        jumpTimer = DisplayManager.getFPScap()/3;
                     }
                 }
                 jumpTimer--;
