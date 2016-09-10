@@ -1,9 +1,8 @@
 package com.aedans.areabuilder;
 
 import com.aedan.jterminal.JTerminal;
-import com.aedan.jterminal.commands.defaultpackage.DefaultPackage;
+import com.aedan.jterminal.commandpackages.defaultpackage.DefaultPackage;
 import com.aedan.jterminal.input.CommandInput;
-import com.aedan.jterminal.input.SystemInput;
 import com.aedan.jterminal.output.CommandOutput;
 import com.aedans.engine.areas.Area;
 import com.aedans.engine.renderer.DisplayManager;
@@ -12,11 +11,9 @@ import com.aedans.engine.renderer.Renderer;
 import com.aedans.engine.renderer.Viewport;
 import com.aedans.engine.renderer.resources.Textures;
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -42,7 +39,7 @@ public class Main {
         DisplayManager.createDisplay(Integer.parseInt(args[0]), Integer.parseInt(args[1]), false, "AreaBuilder");
         Textures.loadTexture("default.png");
         new JTerminal(
-                "-directory assets/area -startup assets/area/startup.jterm",
+                "-directory assets/area -startup assets/area/startup",
                 new OpenGLCommandInput(),
 //                new SystemInput(),
                 new CommandOutput(),
